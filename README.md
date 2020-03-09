@@ -54,6 +54,10 @@ TBD
 
 TBD
 
+## Roadmap
+
+- Real-time dashboard
+  - screening count, positives
 
 ## Team
 
