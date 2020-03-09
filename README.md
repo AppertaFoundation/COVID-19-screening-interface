@@ -4,12 +4,25 @@
 
 > Developed in the Open
 
+## Summary
+
+This repostitory contains software which enables an organisatin to rapidly deploy a Covid-19 screening programme. Data collected will be stored in the local openEHR database and reports to the WHO standard made available.
+
+Being Open Source, the application can be implemented within an organisation using extsting systems therefore reducing privacy and information governance challenges associated with cloud systems.
+
+Being modlular, the application can be connected to an existing openEHR repository or operated with a standalone repository.
+
+## Project aims
+
 The aims of this project are:
 
 1. Development of an Open Source Covid-19 screening application 
-2. Ensure that it is accessible to anyone anywhere to implement and improve
+2. Ensure that it is accessible to anyone anywhere to use and improve
 3. Simple to deploy and operate
 4. Built using open standard interfaces and components
+5. Enables the user to collect screening data in an open, reusable and managable way
+6. Provides reports to the WHO mandated standard
+7. Simplifying and ensuring maintenance of privacy
 
 
 ## References
