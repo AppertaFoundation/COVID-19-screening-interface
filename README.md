@@ -26,6 +26,21 @@ The screening delivers a web form which enables the user to input responses to t
 
 Basic information on the subject is stored (the name or ID) and reporting of cases available.
 
+## Installing
+
+### ehrbase CDR
+
+Using docker-compose: https://github.com/OpusVL/ehrbase
+
+### Middleware
+
+TBD
+
+### Front-end
+
+TBD
+
+
 ## Team
 
 ### openEHR clinical modeling
