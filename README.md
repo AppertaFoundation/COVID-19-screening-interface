@@ -22,11 +22,11 @@ openEHR CKM
 - Front-end: REACT
 - Middleware: TBD
 
-The screening interface presents a web form 
+The screening delivers a web form which enables the user to input responses to the screening questions and store the result in an openEHR Clinical Data Repository (CDR).
 
+Basic information on the subject is stored (the name or ID) and reporting of cases available.
 
 ## Team
-
 
 ### openEHR clinical modeling
 
@@ -49,6 +49,4 @@ The screening interface presents a web form
 ## Contact
 
 info@apperta.org
-
-
 
