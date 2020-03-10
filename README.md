@@ -6,21 +6,22 @@
 
 ## Summary
 
-This repostitory contains software which enables an organisatin to rapidly deploy a Covid-19 screening programme. Data collected will be stored in the local openEHR database and reports to the WHO standard made available.
+This repository contains software which enables an organisation to rapidly deploy a Covid-19 screening programme. Data collected will be stored in the local openEHR database and reports to the WHO standard made available.
 
-Being Open Source, the application can be implemented within an organisation using extsting systems therefore reducing privacy and information governance challenges associated with cloud systems.
+Being Open Source, the application can be implemented within an organisation using existing systems therefore reducing privacy and information governance challenges associated with cloud systems.
 
-Being modlular, the application can be connected to an existing openEHR repository or operated with a standalone repository.
+Being modular, the application can be connected to an existing openEHR repository or operated with a stand-alone repository.
 
 ## Project aims
 
 The aims of this project are:
 
 1. Development of an Open Source Covid-19 screening application 
+2. A clinically safe and sustainable application
 2. Ensure that it is accessible to anyone anywhere to use and improve
 3. Simple to deploy and operate
 4. Built using open standard interfaces and components
-5. Enables the user to collect screening data in an open, reusable and managable way
+5. Enables the user to collect screening data in an open, reusable and manageable way
 6. Provides reports to the WHO mandated standard
 7. Simplifying and ensuring maintenance of privacy
 
@@ -39,6 +40,11 @@ openEHR CKM
 The screening delivers a web form which enables the user to input responses to the screening questions and store the result in an openEHR Clinical Data Repository (CDR).
 
 Basic information on the subject is stored (the name or ID) and reporting of cases available.
+
+## Contributor Licence Agreement (CLA)
+
+We include a CLA to ensure that contributions don't restrict how this software can be used. If you are not comfortable with this, you may still fork / copy the code and set your own rules.
+However to ensure that the health providers have perpetual and unencumbered use of this application, a CLA is necessary for our supported versions.
 
 ## Installing
 
@@ -61,9 +67,9 @@ TBD
 
 ## Team
 
-### openEHR clinical modeling
+### openEHR clinical modelling
 
-- Ian Mcnichol (FreshEHR)
+- Ian McNicoll (FreshEHR)
 - Alan Fish (Apperta)
 
 ### System development
@@ -71,7 +77,7 @@ TBD
 - JJ - Architecture (OpusVL)
 - James Curtis - Developer (OpusVL)
 - Adrianna - Front-end engineer (OpusVL)
-- Darren WIlson - User Experience (UX Centric)
+- Darren Wilson - User Experience (UX Centric)
 - Paul - Infrastructure engineer (OpusVL)
 
 ### Project management
