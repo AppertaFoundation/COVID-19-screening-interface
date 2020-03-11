@@ -35,7 +35,7 @@ openEHR CKM
 
 - openEHR CDR: ehrbase
 - Front-end: REACT
-- Middleware: TBD
+- Middleware: DJango
 
 The screening delivers a web form which enables the user to input responses to the screening questions and store the result in an openEHR Clinical Data Repository (CDR).
 
