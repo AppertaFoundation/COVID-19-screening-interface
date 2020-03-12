@@ -157,3 +157,5 @@ dmypy.json
 
 # Custom
 .idea/
+
+/docker-compose.override.yml
