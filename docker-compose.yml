@@ -1,0 +1,62 @@
+version: "3.7"
+services:
+  django:
+    image: quay.io/opusvl/c19:dev
+    container_name: c19-django
+    environment:
+      DJANGO_POSTGRES_USER: ${DJANGO_POSTGRES_USER}
+      DJANGO_POSTGRES_PASSWORD: ${DJANGO_POSTGRES_PASSWORD}
+      DJANGO_POSTGRES_DB: ${DJANGO_POSTGRES_DB}
+      EHRBASE_USER: ${EHRBASE_USER}
+      EHRBASE_PASSWORD: ${EHRBASE_PASSWORD}
+    volumes:
+    - ./django/C19:/app
+    ports:
+    - 8000:8000
+    depends_on:
+      - django_postgres
+    networks:
+      - django_net
+  django_postgres:
+    image: postgres:12
+    container_name: c19-django-postgres
+    environment:
+      POSTGRES_USER: ${DJANGO_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${DJANGO_POSTGRES_PASSWORD}
+    networks:
+      - django_net
+
+  ehrdb:
+    image: ehrbaseorg/ehrbase-postgres:latest
+    volumes:
+      - "./postgres/:/var/lib/postgresql/data/:rw"
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "${EHRBASE_DB}", "-U", "${EHRBASE_USER}"]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      EHRBASE_USER: ${EHRBASE_USER}
+      EHRBASE_PASSWORD: ${EHRBASE_PASSWORD}
+    networks:
+      - ehrbase_net
+    restart: always
+
+  ehrbase:
+    image: ehrbaseorg/ehrbase:next
+    environment:
+      DB_URL: ${DB_URL}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      SYSTEM_NAME: ${SYSTEM_NAME}
+    ports:
+      - "8080:8080"
+    networks:
+      - ehrbase_net
+    restart: always
+
+networks:
+  django_net:
+  ehrbase_net:
