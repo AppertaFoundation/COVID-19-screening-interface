@@ -11,3 +11,7 @@ class C19APIUserProfile(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+    class Meta:
+        verbose_name = 'Covid-19 API User Profile'
+        verbose_name_plural = 'Covid-19 API User Profiles'
