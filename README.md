@@ -50,7 +50,7 @@ However to ensure that the health providers have perpetual and unencumbered use 
 
 ### ehrbase CDR
 
-Using docker-compose: https://github.com/OpusVL/ehrbase
+Using docker-compose: https://github.com/OpusVL/ehrbase-docker-compose
 
 ### Middleware
 
