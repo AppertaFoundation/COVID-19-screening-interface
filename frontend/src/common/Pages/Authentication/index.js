@@ -2,7 +2,10 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../core/context/AuthContext';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
+import { Grid, Box, Typography } from '@material-ui/core';
+import { Button } from '../../Components';
+import Input from '././../../Components/Input/Input';
+import { Controller } from 'react-hook-form';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -11,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 export default ({ history }) => {
-  const { register, handleSubmit, errors } = useForm();
+  const { handleSubmit, errors, control } = useForm();
   const { setAuthData } = useContext(AuthContext);
 
   const onSubmit = data => {
@@ -21,12 +24,51 @@ export default ({ history }) => {
   const classes = useStyles();
 
   return (
-    <Grid className={classes.root}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input name="nhsNo" ref={register({ required: true })} />
-        {errors.nhhsNo && <span>This field is required</span>}
-        <input type="submit" />
-      </form>{' '}
-    </Grid>
+    <form id="login" onSubmit={handleSubmit(onSubmit)}>
+      <Grid
+        className={classes.root}
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+        spacing={6}
+      >
+        <Grid item spacing={0}>
+          <Typography
+            style={{ color: '#58585A' }}
+            align="center"
+            variant="h2"
+            component="h1"
+          >
+            COVID-19
+          </Typography>
+          <Typography
+            style={{ color: '#58585A' }}
+            align="center"
+            variant="h2"
+            component="h1"
+          >
+            Assessmen
+          </Typography>
+        </Grid>
+
+        <Grid item>
+          <Box width={300}>
+            <Controller
+              as={<Input fullWidth label="Enter NHS Number" />}
+              control={control}
+              rules={{ required: true }}
+              name={'nhsNo'}
+            />
+            {errors.nhhsNo && <span>This field is required</span>}
+          </Box>
+        </Grid>
+        <Grid item>
+          <Button type="submit" form="login">
+            Create New Assessment
+          </Button>
+        </Grid>
+      </Grid>
+    </form>
   );
 };

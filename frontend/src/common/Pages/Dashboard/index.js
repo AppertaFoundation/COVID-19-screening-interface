@@ -1,7 +1,7 @@
 import React, { useState /* useContext */ } from 'react';
 import { useForm } from 'react-hook-form';
 import { Grid, Typography, Divider, Box } from '@material-ui/core';
-// import { AuthContext } from '../../../core/context/AuthContext';
+// import { AuthContext } from '../../../core/context/AuthCogittext';
 import BottomToolBar from '../../Layout/BottomToolBar';
 import DateFnsUtils from '@date-io/date-fns';
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
@@ -24,8 +24,7 @@ export default () => {
     errors,
     register,
     watch,
-    setError,
-    formState
+    setError
   } = useForm();
   const [selectedDate, handleDateChange] = useState(null);
 
@@ -38,6 +37,7 @@ export default () => {
       date_of_onset: selectedDate,
       first_symptoms_presence: firstSymptomsPresence
     });
+    console.log(result);
   };
   // const onLogOut = () => setAuthData(null);
   return (
@@ -81,6 +81,7 @@ export default () => {
               register={register}
               required
               setError={setError}
+              control={control}
               name="body_temperature_degrees_C"
             />
           </Box>
@@ -103,7 +104,9 @@ export default () => {
               control={control}
               name={'date_of_onset'}
             />
-            <ErrorMsg>{errors && errors.date_of_onset && 'This field is required'}</ErrorMsg>
+            <ErrorMsg>
+              {errors && errors.date_of_onset && 'This field is required'}
+            </ErrorMsg>
           </Box>
         </Grid>
       </form>

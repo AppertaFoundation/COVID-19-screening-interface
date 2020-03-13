@@ -6,5 +6,9 @@ export default createMuiTheme({
     subtitle1: {
       color: 'grey'
     }
+  },
+  overrides: {
+    MuiInputBase: { root: { backgroundColor: '#fff' } },
+    MuiOutlinedInput: { root: { borderRadius: 8 } }
   }
 });
