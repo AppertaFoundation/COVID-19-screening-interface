@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
+
 import { AuthContext } from '../context/AuthContext';
 
 export default ({ component: Component, ...rest }) => {
@@ -17,7 +18,7 @@ export default ({ component: Component, ...rest }) => {
     );
   }
   return (
-    <Route
+      <Route
       {...rest}
       render={routeProps =>
         auth.data ? <Component {...routeProps} /> : <Redirect to="/welcome" />
