@@ -61,7 +61,15 @@ TBD
 
 #### Prep / deps
 
-sudo apt install cmdtest
+Install and set up yarn - note that the last step may take a while
+
+```
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
+sudo apt install yarn
+yarn
+```
 
 #### Clone this repo
 
