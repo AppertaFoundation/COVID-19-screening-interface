@@ -2,16 +2,16 @@ import React from 'react';
 import { Switch, BrowserRouter, Route } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 
-import Authentication from '../../common/Pages/Authentication';
-import Dashboard from '../../common/Pages/Dashboard';
-import Intro from '../../common/Pages/Intro';
+import Authoriztion from '../../common/Pages/Authoriztion';
+import Screening from '../../common/Pages/Screening';
+import Welcome from '../../common/Pages/Welcome';
 
 export default () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/intro" component={Intro} />
-      <Route path="/sign-in" component={Authentication} />
-      <PrivateRoute path="/" component={Dashboard} />
+      <Route path="/welcome" component={Welcome} />
+      <Route path="/sign-in" component={Authoriztion} />
+      <PrivateRoute path="/" component={Screening} />
     </Switch>
   </BrowserRouter>
 );

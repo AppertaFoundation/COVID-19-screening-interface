@@ -20,7 +20,7 @@ export default ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={routeProps =>
-        auth.data ? <Component {...routeProps} /> : <Redirect to="/intro" />
+        auth.data ? <Component {...routeProps} /> : <Redirect to="/welcome" />
       }
     />
   );
