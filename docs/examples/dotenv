@@ -1,0 +1,17 @@
+DJANGO_POSTGRES_USER=django
+DJANGO_POSTGRES_PASSWORD=django
+DJANGO_POSTGRES_DB=django
+
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+EHRBASE_USER=ehrbase
+EHRBASE_PASSWORD=ehrbase
+EHRBASE_DB=ehrbase
+
+DB_URL=jdbc:postgresql://ehrdb:5432/ehrbase
+DB_USER=ehrbase
+DB_PASS=ehrbase
+SYSTEM_NAME=local.ehrbase.org
+
+C19_BACKEND_PORT=8000
+EHRBASE_PORT=8001
