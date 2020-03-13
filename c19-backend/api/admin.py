@@ -20,5 +20,6 @@ class C19APIUserProfileAdminForm(forms.ModelForm):
 
 class C19APIUserProfileAdmin(admin.ModelAdmin):
     form = C19APIUserProfileAdminForm
+    list_display = ('user', 'clinical_author_name', 'clinical_author_id')
 
 admin.site.register(C19APIUserProfile, C19APIUserProfileAdmin)
