@@ -12,10 +12,8 @@ Being Open Source, the application can be implemented within an organisation usi
 
 Being modular, the application can be connected to an existing openEHR repository or operated with a stand-alone repository.
 
-| Screening questions | Date picker  |
-|------------|-------------|
-| ![Screening question screenshot](/AppertaFoundation/COVID-19-screening-interface/blob/master/frontend/screenshots/screening-questions.png) | 
-![Screening date screenshot](/AppertaFoundation/COVID-19-screening-interface/blob/master/frontend/screenshots/screening-questions-date.png) |
+[Screening question screenshot](https://github.com/AppertaFoundation/COVID-19-screening-interface/blob/master/frontend/screenshots/screening-questions.png)
+[Screening date screenshot](https://github.com/AppertaFoundation/COVID-19-screening-interface/blob/master/frontend/screenshots/screening-questions-date.png)
 
 ## Project aims
 
