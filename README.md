@@ -14,8 +14,8 @@ Being modular, the application can be connected to an existing openEHR repositor
 
 | Screening questions | Date picker  |
 |------------|-------------|
-| ![Screening question screenshot](/frontend/screenshots/screening-questions.png|width=100) | 
-![Screening date screenshot](/frontend/screenshots/screening-questions-date.png|width=100) |
+| ![Screening question screenshot](/AppertaFoundation/COVID-19-screening-interface/blob/master/frontend/screenshots/screening-questions.png) | 
+![Screening date screenshot](/AppertaFoundation/COVID-19-screening-interface/blob/master/frontend/screenshots/screening-questions-date.png) |
 
 ## Project aims
 
