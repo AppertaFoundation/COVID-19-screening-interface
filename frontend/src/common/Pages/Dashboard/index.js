@@ -50,10 +50,13 @@ export default () => {
             </Typography>
             <Divider />
           </Box>
-          <Box mt={1} mr={1} ml={1} width={700}>
+          <Box mt={1} mr={1} ml={1} >
             <IdentityCard />
           </Box>
           <Box>
+            <Box m={1}>
+          <Typography variant="h6" component="h2">Patient Symptomps</Typography>
+          </Box>
             {labels.SYMPTOMPS.map(symptom => {
               const { name, choices, label } = symptom;
               return (
@@ -67,14 +70,14 @@ export default () => {
               );
             })}
           </Box>
-          <Box m={1} width={700}>
+          <Box m={1} >
             <OtherSymptomps
               control={control}
               register={register}
               watch={watch}
             />
           </Box>
-          <Box m={1} width={700}>
+          <Box m={1} >
             <Temperature
               control={control}
               errors={errors}
@@ -84,7 +87,7 @@ export default () => {
               name="body_temperature_degrees_C"
             />
           </Box>
-          <Box m={1} width={700}>
+          <Box m={1} >
             <Controller
               as={
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
