@@ -12,6 +12,11 @@ Being Open Source, the application can be implemented within an organisation usi
 
 Being modular, the application can be connected to an existing openEHR repository or operated with a stand-alone repository.
 
+| Screening questions | Date picker  |
+|------------|-------------|
+| ![Screening question screenshot](/frontend/screenshots/screening-questions.png|width=100) | 
+![Screening date screenshot](/frontend/screenshots/screening-questions-date.png|width=100) |
+
 ## Project aims
 
 The aims of this project are:
