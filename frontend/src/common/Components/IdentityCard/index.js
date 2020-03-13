@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/styles';
 import MuiPaper from '@material-ui/core/Paper';
 import { Box, Typography } from '@material-ui/core';
 
-const Paper = withStyles(theme => ({
+const Paper = withStyles(() => ({
   root: {
     backgroundColor: 'lightgrey'
   }

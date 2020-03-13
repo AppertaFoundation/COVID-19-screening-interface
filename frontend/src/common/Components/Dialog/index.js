@@ -1,15 +1,8 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
-import {
-  Button,
-  Dialog,
-  Box,
-  Slide,
-  Typography,
-  Grid
-} from '@material-ui/core';
+import { Dialog, Box, Slide, Typography } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
@@ -32,6 +25,7 @@ const styles = theme => ({
 });
 
 const Transition = React.forwardRef(function Transition(props, ref) {
+  // eslint-disable-next-line react/jsx-props-no-spreading
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
@@ -59,13 +53,8 @@ const DialogContent = withStyles(theme => ({
 }))(MuiDialogContent);
 
 export default ({ title, children, open, openAction, handleClose }) => {
-  //   const [open, setOpen] = React.useState(false);
-
   return (
-    <div>
-      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open full-screen dialog
-      </Button> */}
+    <>
       {openAction}
       <Dialog
         fullScreen
@@ -86,6 +75,6 @@ export default ({ title, children, open, openAction, handleClose }) => {
         </DialogTitle>
         <DialogContent>{children}</DialogContent>
       </Dialog>
-    </div>
+    </>
   );
 };
