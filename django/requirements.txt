@@ -1,5 +1,0 @@
-Django
-psycopg2
-djangorestframework
-requests
-pydevd-pycharm~=193.6494.30
