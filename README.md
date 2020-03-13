@@ -46,7 +46,7 @@ Basic information on the subject is stored (the name or ID) and reporting of cas
 We include a CLA to ensure that contributions don't restrict how this software can be used. If you are not comfortable with this, you may still fork / copy the code and set your own rules.
 However to ensure that the health providers have perpetual and unencumbered use of this application, a CLA is necessary for our supported versions.
 
-## Installing
+## Installing COVID-19-screening-interface
 
 ### ehrbase CDR
 
@@ -58,7 +58,43 @@ TBD
 
 ### Front-end
 
-TBD
+
+#### Prep / deps
+
+sudo apt install cmdtest
+
+#### Clone this repo
+
+```
+git clone git@github.com:AppertaFoundation/COVID-19-screening-interface.git
+cd COVID-19-screening-interface/frontend/
+```
+
+#### Start
+
+```
+yarn
+yarn start
+```
+
+#### Troubleshooting
+
+```00h00m00s 0/0: : ERROR: There are no scenarios; must have at least one.```
+
+Cause: outdated yarn (provided by cmdtest)
+
+See solution: https://github.com/yarnpkg/yarn/issues/2821
+
+```
+yarn run v1.22.4
+$ react-scripts start
+/bin/sh: 1: react-scripts: not found
+```
+
+Cause: starting before setting up
+
+Solution: run '```yarn```' before '```yarn start```'
+
 
 ## Roadmap
 
