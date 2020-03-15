@@ -19,15 +19,17 @@ Being modular, the application can be connected to an existing openEHR repositor
 
 The aims of this project are:
 
-1. Development of an Open Source Covid-19 screening application 
-2. A clinically safe and sustainable application
-2. Ensure that it is accessible to anyone anywhere to use and improve
+1. Development of a clinicaly safe and sustainable Open Source Covid-19 screening application 
+2. To ensure that it is accessible to anyone anywhere to use and improve
 3. Simple to deploy and operate
-4. Built using open standard interfaces and components
-5. Enables the user to collect screening data in an open, reusable and manageable way
-6. Provides reports to the WHO mandated standard
-7. Simplifying and ensuring maintenance of privacy
+4. Build using open standard interfaces and components
+5. Enable the user to collect screening data in an open, reusable and manageable way
+6. Provide reports to the WHO mandated standard
+7. Simplify and ensure maintenance of privacy
 
+## Project governance
+
+Project governance is be managed via the Custodian model with Apperta performing the Custodian role. This ensures that the software is perpetually available without encumbrance whilst being safe, secure and professionally supported.
 
 ## References
 
@@ -46,14 +48,34 @@ Basic information on the subject is stored (the name or ID) and reporting of cas
 
 ## Contributor Licence Agreement (CLA)
 
-We include a CLA to ensure that contributions don't restrict how this software can be used. If you are not comfortable with this, you may still fork / copy the code and set your own rules.
-However to ensure that the health providers have perpetual and unencumbered use of this application, a CLA is necessary for our supported versions.
+Contributions are subject to a CLA to ensure that contributions do not restrict how this software can be used. If you are not comfortable with this, you may still fork / copy the code and set your own rules.
+However to ensure that health professionals who rely on this software have perpetual and unencumbered use of this application, a CLA is necessary for our supported versions.
 
 ## Installing COVID-19-screening-interface
 
-### ehrbase CDR
+The software is provided as docker-compose containers whcih creates a low barrier to entry. However the associated docker files and images can be used within many container orchistration systems.
 
-Using docker-compose: https://github.com/OpusVL/ehrbase-docker-compose
+During the development phase, the instructions cover the individual components. The release version will only require a single docker-compose which will perform all of the steps.
+
+### Installing Docker Community Edition
+
+For many Libux systems, an up to date Docker can be installed as follows:
+
+1. curl -fsSL https://get.docker.com -o /tmp/get.docker.sh 
+2. sudo sh /tmp/get.docker.sh 
+
+Other installation information can be found here: https://docs.docker.com/install/
+
+### Installing ehrbase CDR
+
+ehrbase can be installed using the docker-compose file here: https://github.com/OpusVL/ehrbase-docker-compose
+
+In summary:
+
+1. Download the ehrbase compose file:
+    - git clone https://github.com/OpusVL/ehrbase.git
+3. cd ehrbase
+4. docker-compose up -d
 
 ### Middleware
 
@@ -61,6 +83,7 @@ TBD
 
 ### Front-end
 
+The front-end is built in React. The following instructions should help get the development environment up and running.
 
 #### Prep / deps
 
@@ -112,6 +135,19 @@ Solution: run '```yarn```' before '```yarn start```'
 - Real-time dashboard
   - screening count, positives
 
+
+
+## Contributing
+
+Please help us improve our documentation, installation process fix bugs, test and use. 
+
+You can engage and contribute in the following ways:
+
+1. Clone the repo's, make changes and create a Pull Request (PR)
+2. Raise an issue on Github
+3. Join us on Slack, contact info@apperta.org for details
+4. Share with others
+
 ## Team
 
 ### openEHR clinical modelling
@@ -131,6 +167,7 @@ Solution: run '```yarn```' before '```yarn start```'
 
 - David Jobling (Apperta)
 - Stuart Mackintosh (OpusVL)
+
 
 ## Contact
 
