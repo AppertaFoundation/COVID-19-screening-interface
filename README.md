@@ -150,10 +150,16 @@ You can engage and contribute in the following ways:
 
 ## Team
 
+Many people are involved in this project directly and indirectly and it builds on significant efforts of the industry and community. Some of the people in our team are:
+
 ### openEHR clinical modelling
 
 - Ian McNicoll (FreshEHR)
 - Alan Fish (Apperta)
+
+### Clinical design
+
+- Dr Alexander Davey
 
 ### System development
 
