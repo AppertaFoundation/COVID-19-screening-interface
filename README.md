@@ -57,9 +57,20 @@ The software is provided as docker-compose containers whcih creates a low barrie
 
 During the development phase, the instructions cover the individual components. The release version will only require a single docker-compose which will perform all of the steps.
 
+These instructions should get you up and running on a cloud hosted service or a local computing resource.
+
+Use a recent Linux, for example
+
+- Debian
+- Ubuntu / Mint
+- Centos / Fedora
+
+or anything else that runs Docker.
+
+
 ### Installing Docker Community Edition
 
-For many Libux systems, an up to date Docker can be installed as follows:
+For typical Linux systems, an up to date Docker can be installed as follows:
 
 1. curl -fsSL https://get.docker.com -o /tmp/get.docker.sh 
 2. sudo sh /tmp/get.docker.sh 
