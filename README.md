@@ -129,6 +129,12 @@ Cause: starting before setting up
 
 Solution: run '```yarn```' before '```yarn start```'
 
+## Data protection and information governance
+
+The application can operate within the existing IT estate of the customer therefore no data is stored outside the existing information governance scope through a standard installation.
+
+Where information governance requires, approved hosting service should be used.
+
 
 ## Roadmap
 
