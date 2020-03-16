@@ -15,7 +15,8 @@ export default ({
 }) => {
   const [open, setOpen] = useState(false);
   const [valueGroups, setValueGroup] = useState({
-    firstColumn: '36.',
+    firstColumn: '36',
+    pointer: '.',
     secondColumn: '6'
   });
   const [inputValue, setInputValue] = useState(null);
@@ -36,7 +37,9 @@ export default ({
     setOpen(false);
   };
   const getValue = () =>
-    inputValue ? inputValue.firstColumn + inputValue.secondColumn : '';
+    inputValue
+      ? inputValue.firstColumn + inputValue.pointer + inputValue.secondColumn
+      : '';
   return (
     <Dialog
       title="Add Temperature"
@@ -82,10 +85,11 @@ export default ({
         spacing={6}
       >
         <Grid item>
-          <Box width={140}>
+          <Box width={200}>
             <Picker
               optionGroups={{
-                firstColumn: ['35.', '36.', '37.', '38.', '39.', '40.', '41.'],
+                firstColumn: ['35', '36', '37', '38', '39', '40', '41'],
+                pointer: ['.'],
                 secondColumn: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
               }}
               valueGroups={valueGroups}
