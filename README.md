@@ -40,7 +40,7 @@ openEHR CKM
 
 - openEHR CDR: ehrbase
 - Front-end: REACT
-- Middleware: DJango
+- Back-end: DJango
 
 The screening delivers a web form which enables the user to input responses to the screening questions and store the result in an openEHR Clinical Data Repository (CDR).
 
@@ -55,9 +55,9 @@ However to ensure that health professionals who rely on this software have perpe
 
 The software is provided as docker-compose containers whcih creates a low barrier to entry. However the associated docker files and images can be used within many container orchistration systems.
 
-During the development phase, the instructions cover the individual components. The release version will only require a single docker-compose which will perform all of the steps.
+During the development phase, the instructions cover the individual components. The release version of the app will only require a single docker-compose which will perform all of the steps.
 
-These instructions should get you up and running on a cloud hosted service or a local computing resource.
+These instructions should get a CDR and the app up and running on a cloud hosted service or a local computing resource.
 
 Use a recent Linux, for example
 
@@ -66,7 +66,6 @@ Use a recent Linux, for example
 - Centos / Fedora
 
 or anything else that runs Docker.
-
 
 ### Installing Docker Community Edition
 
@@ -88,13 +87,29 @@ In summary:
 3. cd ehrbase
 4. docker-compose up -d
 
-### Middleware
+### Screening application
 
-TBD
+#### Clone this repo
 
-### Front-end
+```
+git clone git@github.com:AppertaFoundation/COVID-19-screening-interface.git
+cd COVID-19-screening-interface/frontend/
+```
+
+#### App back-end
+
+The docker-compose.yml brings in the back-end and runtime dependacies.
+
+1. cd c19-backend 
+2. docker build -t quay.io/opusvl/c19:dev .
+
+> The compose should be considered unstable, paths and config will change.
+
+#### Front-end development environment
 
 The front-end is built in React. The following instructions should help get the development environment up and running.
+
+Once complete, this will not be required.
 
 #### Prep / deps
 
@@ -106,13 +121,6 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt update
 sudo apt install yarn
 yarn
-```
-
-#### Clone this repo
-
-```
-git clone git@github.com:AppertaFoundation/COVID-19-screening-interface.git
-cd COVID-19-screening-interface/frontend/
 ```
 
 #### Start
@@ -147,13 +155,6 @@ The application can operate within the existing IT estate of the customer theref
 Where information governance requires, approved hosting service should be used.
 
 
-## Roadmap
-
-- Real-time dashboard
-  - screening count, positives
-
-
-
 ## Contributing
 
 Please help us improve our documentation, installation process fix bugs, test and use. 
@@ -164,6 +165,7 @@ You can engage and contribute in the following ways:
 2. Raise an issue on Github
 3. Join us on Slack, contact info@apperta.org for details
 4. Share with others
+5. add to the roadmap
 
 ## Team
 
