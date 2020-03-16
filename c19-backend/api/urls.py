@@ -11,6 +11,6 @@ router = routers.DefaultRouter()
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
-    path('0.1/covid-screens/', views.CovidScreenListView.as_view())
+    path('0.1/covid-screenings/', views.CovidScreenListView.as_view())
 ]
 
