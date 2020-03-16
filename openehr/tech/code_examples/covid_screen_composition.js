@@ -228,7 +228,13 @@ const targetCompositionRaw = () => {
             "_type": "PARTY_IDENTIFIED",
             "name": "Silvia Blake"
         },
+      /* Pattern for self-assessment
+       "composer": {
+            "_type": "PARTY_SELF",
+        },
+      */
         "context": {
+
             "_type": "EVENT_CONTEXT",
             "start_time": {
                 "_type": "DV_DATE_TIME",
