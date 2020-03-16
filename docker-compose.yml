@@ -8,8 +8,6 @@ services:
       DJANGO_POSTGRES_DB: ${DJANGO_POSTGRES_DB}
       C19_BACKEND_SECRET_KEY: ${C19_BACKEND_SECRET_KEY}
       C19_API_EHRBASE_URL: http://ehrbase:8080
-      C19_API_EHRBASE_USERNAME: ${EHRBASE_USER}
-      C19_API_EHRBASE_PASSWORD: ${EHRBASE_PASSWORD}
       # volumes:
       #   - ./django/C19:/app
     ports:
