@@ -3,8 +3,9 @@ import Button from './Button';
 import IdentityCard from './IdentityCard';
 import RadioGroup from './RadioGroup';
 import Temperature from './Input/Temperature';
+import ErrorMsg from './ErrorMsg';
+import Dialog from './Dialog';
 import DatePicker from './DatePicker';
-import ErrorMsg from './ErrorMsg'
 
 export {
   Button,
@@ -12,6 +13,7 @@ export {
   IdentityCard,
   Temperature,
   RadioGroup,
-  DatePicker,
-  OtherSymptomps
+  OtherSymptomps,
+  Dialog,
+  DatePicker
 };

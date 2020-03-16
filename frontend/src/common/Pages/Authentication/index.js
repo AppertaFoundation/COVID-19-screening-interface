@@ -55,7 +55,7 @@ export default ({ history }) => {
         <Grid item>
           <Box width={300}>
             <Controller
-              as={<Input fullWidth label="Enter NHS Number" />}
+              as={<Input type='number' fullWidth label="Enter NHS Number" />}
               control={control}
               rules={{ required: true }}
               name={'nhsNo'}
