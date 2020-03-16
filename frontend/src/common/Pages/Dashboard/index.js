@@ -23,7 +23,7 @@ import {
 } from '../../../core/hooks/useApiRequest/actionTypes';
 
 export default () => {
-  const { setAuthData } = useContext(AuthContext);
+  const { auth, setAuthData } = useContext(AuthContext);
   const {
     handleSubmit,
     control,
@@ -90,7 +90,7 @@ export default () => {
             <Divider />
           </Box>
           <Box mt={1} mr={1} ml={1}>
-            <IdentityCard />
+            <IdentityCard nhsNo={auth.data} />
           </Box>
           <Box>
             <Box m={1}>
