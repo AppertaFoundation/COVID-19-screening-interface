@@ -131,3 +131,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EHRBASE_CONNECTION_PARAMS = dict(
+    base_url=os.environ['C19_API_EHRBASE_URL'],
+    username=os.environ['C19_API_EHRBASE_USERNAME'],
+    password=os.environ['C19_API_EHRBASE_PASSWORD'],
+)

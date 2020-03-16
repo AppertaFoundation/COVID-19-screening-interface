@@ -2,15 +2,21 @@
 import os
 import requests
 
+import attr
 
+
+def connect(*, base_url, username, password) -> 'OpenEHRConnector':
+    token = 'FAKE'   # TODO get a real one
+    #response = requests.get(base_url, username, password)
+    #token = response.get('token')
+    return OpenEHRConnector(base_url=base_url, username=username, token=token)
+
+
+@attr.s(frozen=True)
 class OpenEHRConnector(object):
-    _host = 'http://localhost'
-    _username = os.environ['EHRBASE_USER']
-    _password = os.environ['EHRBASE_PASSWORD']
-
-    def get_token(self):
-        response = requests.get(self._host, self._username, self._password)
-        return response.get('token')
+    base_url = attr.ib()
+    username = attr.ib()
+    token = attr.ib()
 
     def get(self, path):
-        return requests.get(self._host + path)
+        return requests.get(self.base_url + path)
