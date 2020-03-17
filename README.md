@@ -12,6 +12,8 @@ Being Open Source, the application can be implemented within an organisation usi
 
 Being modular, the application can be connected to an existing openEHR repository or operated with a stand-alone repository.
 
+Demo of front-end alpha product: https://adabedi.github.io/c19-demo/ - note, unstable
+
 - [Screening question screenshot](https://github.com/AppertaFoundation/COVID-19-screening-interface/blob/master/frontend/screenshots/screening-questions.png)
 - [Screening date screenshot](https://github.com/AppertaFoundation/COVID-19-screening-interface/blob/master/frontend/screenshots/screening-questions-date.png)
 
@@ -164,12 +166,12 @@ You can engage and contribute in the following ways:
 1. Clone the repo's, make changes and create a Pull Request (PR)
 2. Raise an issue on Github
 3. Join us on Slack, contact info@apperta.org for details
-4. Share with others
-5. add to the roadmap
+4. Share details of this project with others
+5. Add to the roadmap
 
 ## Team
 
-Many people are involved in this project directly and indirectly and it builds on significant efforts of the industry and community. Some of the people in our team are:
+Many people are involved in this project directly and indirectly and it builds on significant efforts of the industry and community. Some of the people in our direct team are:
 
 ### openEHR clinical modelling
 
@@ -182,17 +184,19 @@ Many people are involved in this project directly and indirectly and it builds o
 
 ### System development
 
-- JJ - Architecture (OpusVL)
-- James Curtis - Developer (OpusVL)
+- James C - Developer (OpusVL)
 - Adrianna - Front-end engineer (OpusVL)
 - Darren Wilson - User Experience (UX Centric)
-- Paul - Infrastructure engineer (OpusVL)
+- Paul B - Infrastructure engineer (OpusVL)
+- Nick - Developer (OpusVL)
+- Paul W - Developer (OpusVL)
+- Matt S - Developer (RBC/community)
 
 ### Project management
 
-- David Jobling (Apperta)
+- David Jobling - Project co-ordinator / analyst (Apperta)
+- JJ - Architect / project director (OpusVL)
 - Stuart Mackintosh (OpusVL)
-
 
 ## Contact
 
