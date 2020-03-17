@@ -48,17 +48,17 @@ const doc = {
      clinicalAuthorId: "134-4567",
      documentTime : "2020-03-11",
      symptoms : {
-        firstSymptomsPresenceCode : "at0.3",
+        firstSymptomsPresenceCode : "at0.3", //at0.2::Present [The symptom is present.] at0.3::Absent [The symptom is absent.] at0.4::Unknown [It is not known if the symptom is present.]
         firstSymptomsPresenceText : "Present",
         dateOfOnset : "2020-03-10",
 
-         coughPresenceCode : "at0.1",
+         coughPresenceCode : "at0.1",  //at0.2::Present [The symptom is present.] at0.3::Absent [The symptom is absent.] at0.4::Unknown [It is not known if the symptom is present.]
         coughPresenceText : "Unknown",
-        feverPresenceCode :"at0.3",
-        feverPresenceValue :"Present",
-        difficultyBreathingPresenceCode : "at0.3",
+        feverPresenceCode :"at0.3",  //at0.2::Present [The symptom is present.] at0.3::Absent [The symptom is absent.] at0.4::Unknown [It is not known if the symptom is present.]
+        feverPresenceText :"Present",
+        difficultyBreathingPresenceCode : "at0.3",  //at0.2::Present [The symptom is present.] at0.3::Absent [The symptom is absent.] at0.4::Unknown [It is not known if the symptom is present.]
         difficultyBreathingPresenceText : "Present",
-        soreThroatPresenceCode : "at0.3",
+        soreThroatPresenceCode : "at0.3",  //at0.2::Present [The symptom is present.] at0.3::Absent [The symptom is absent.] at0.4::Unknown [It is not known if the symptom is present.]
         soreThroatPresenceText : "Present",
          otherSymptom: [
              {
@@ -77,6 +77,64 @@ const doc = {
       {
         magnitude : 38.4,
         units: "Cel"
+    },
+    travelHistory : {
+         recentTravelCode: "at0012", //at0112::Yes [The patient has recently traveled.] at0113::No [The patient has not recently traveled.] at0114::Unknown [Unknown.]
+        recentTravelText: "Yes",
+        returnDate : "2020-03-11"
+    },
+    infectionRiskAssessment : {
+        contactConfirmedCaseCode : "at0018", //at0018::Present [The risk factor has been identified for this individual.] at0019::Absent [The risk factor has not been identified for this individual.] at0.15::Unknown [No information is available for this risk factor.
+        contactConfirmedCaseText : "Present", //at0018::Present [The risk factor has been identified for this individual.] at0019::Absent [The risk factor has not been identified for this individual.] at0.15::Unknown [No information is available for this risk factor.
+        contactSuspectedPneumoniaCode: "at0019", //at0018::Present [The risk factor has been identified for this individual.] at0019::Absent [The risk factor has not been identified for this individual.] at0.15::Unknown [No information is available for this risk factor.
+        contactSuspectedPneumoniaText: "Present", //at0018::Present [The risk factor has been identified for this individual.] at0019::Absent [The risk factor has not been identified for this individual.] at0.15::Unknown [No information is available for this risk factor.
+        contactBirdsInChinaCode: "at0.15", //at0018::Present [The risk factor has been identified for this individual.] at0019::Absent [The risk factor has not been identified for this individual.] at0.15::Unknown [No information is available for this risk factor.
+        contactBirdsInChinaText: "Unknown", //at0018::Present [The risk factor has been identified for this individual.] at0019::Absent [The risk factor has not been identified for this individual.] at0.15::Unknown [No information is available for this risk factor.
+        contactAvianFluCode: "at0.15", //at0018::Present [The risk factor has been identified for this individual.] at0019::Absent [The risk factor has not been identified for this individual.] at0.15::Unknown [No information is available for this risk factor.
+        contactAvianFluText: "Unknown", //at0018::Present [The risk factor has been identified for this individual.] at0019::Absent [The risk factor has not been identified for this individual.] at0.15::Unknown [No information is available for this risk factor.
+        contactSevereRespDiseaseCode: "at0019", //at0018::Present [The risk factor has been identified for this individual.] at0019::Absent [The risk factor has not been identified for this individual.] at0.15::Unknown [No information is available for this risk factor.
+        contactSevereRespDiseaseText: "Absent", //at0018::Present [The risk factor has been identified for this individual.] at0019::Absent [The risk factor has not been identified for this individual.] at0.15::Unknown [No information is available for this risk factor.
+        potentialLocalityExposureCode:"at0018", //at0018::Present [The risk factor has been identified for this individual.] at0019::Absent [The risk factor has not been identified for this individual.] at0.15::Unknown [No information is available for this risk factor.
+        potentialLocalityExposureText:"Present", //at0018::Present [The risk factor has been identified for this individual.] at0019::Absent [The risk factor has not been identified for this individual.] at0.15::Unknown [No information is available for this risk factor.
+        potentialOutbreakLocations: [
+          {
+              locationVisitedText: "Lombardy"
+
+          }
+       ],
+      riskCode :"at0.16", // at0.16::Low risk [The risk of the a patient having a Covid-19 infection is assessed to be low.] at0.17::High risk [The risk of the a patient having a Covid-19 infection is assessed to be high.]
+      riskText :"Low risk"
+    },
+    diagnosis: {
+         //possible values as terminology::code::text
+         //SNOMED-CT::840544004::Suspected disease caused by 2019 novel coronavirus
+        // SNOMED-CT::840546002::Exposure to 2019 novel coronavirus
+        // SNOMED-CT::840539006::Disease caused by 2019-nCoV
+        //
+        //
+        diagnosisText: "Exposure to 2019 novel coronavirus",
+        diagnosisCode: "840546002",
+        diagnosisTerminology: "SNOMED-CT",
+    },
+    serviceRequest :{
+        //possible values as terminology::code::text => serviceNameTerminology:: serviceNameCode::serviceNameText
+        // SNOMED-CT::170499009::Isolation of infection contact
+        // SNOMED-CT::225368008::Contact tracing
+
+         serviceNameText: "Isolation of infection contact",
+         serviceNameCode: "170499009",
+         serviceNameTerminology: "SNOMED-CT",
+
+        //possible values as terminology::code::text
+        //SNOMED-CT::840544004::Suspected disease caused by 2019 novel coronavirus
+        // SNOMED-CT::840546002::Exposure to 2019 novel coronavirus
+        // SNOMED-CT::840539006::Disease caused by 2019-nCoV
+        //
+        //
+        reasonforRequestText: "Exposure to 2019 novel coronavirus",
+        reasonforRequestCode: "840546002",
+        reasonforRequestTerminology: "SNOMED-CT",
+
     }
 
 };
@@ -170,7 +228,13 @@ const targetCompositionRaw = () => {
             "_type": "PARTY_IDENTIFIED",
             "name": "Silvia Blake"
         },
+      /* Pattern for self-assessment
+       "composer": {
+            "_type": "PARTY_SELF",
+        },
+      */
         "context": {
+
             "_type": "EVENT_CONTEXT",
             "start_time": {
                 "_type": "DV_DATE_TIME",
@@ -657,74 +721,6 @@ const targetCompositionRaw = () => {
                 "subject": {
                     "_type": "PARTY_SELF"
                 },
-                "other_participations": [
-                    {
-                        "_type": "PARTICIPATION",
-                        "function": {
-                            "_type": "DV_TEXT",
-                            "value": "requester"
-                        },
-                        "performer": {
-                            "_type": "PARTY_IDENTIFIED",
-                            "external_ref": {
-                                "_type": "PARTY_REF",
-                                "id": {
-                                    "_type": "GENERIC_ID",
-                                    "value": "199",
-                                    "scheme": "HOSPITAL-NS"
-                                },
-                                "namespace": "HOSPITAL-NS",
-                                "type": "ANY"
-                            },
-                            "name": "Dr. Marcus Johnson"
-                        },
-                        "mode": {
-                            "_type": "DV_CODED_TEXT",
-                            "value": "face-to-face communication",
-                            "defining_code": {
-                                "_type": "CODE_PHRASE",
-                                "terminology_id": {
-                                    "_type": "TERMINOLOGY_ID",
-                                    "value": "openehr"
-                                },
-                                "code_string": "216"
-                            }
-                        }
-                    },
-                    {
-                        "_type": "PARTICIPATION",
-                        "function": {
-                            "_type": "DV_TEXT",
-                            "value": "performer"
-                        },
-                        "performer": {
-                            "_type": "PARTY_IDENTIFIED",
-                            "external_ref": {
-                                "_type": "PARTY_REF",
-                                "id": {
-                                    "_type": "GENERIC_ID",
-                                    "value": "198",
-                                    "scheme": "HOSPITAL-NS"
-                                },
-                                "namespace": "HOSPITAL-NS",
-                                "type": "ANY"
-                            },
-                            "name": "Lara Markham"
-                        },
-                        "mode": {
-                            "_type": "DV_CODED_TEXT",
-                            "value": "not specified",
-                            "defining_code": {
-                                "_type": "CODE_PHRASE",
-                                "terminology_id": {
-                                    "_type": "TERMINOLOGY_ID",
-                                    "value": "openehr"
-                                },
-                                "code_string": "193"
-                            }
-                        }
-                    }
-                ],
                 "data": {
                     "_type": "HISTORY",
                     "name": {
@@ -734,7 +730,7 @@ const targetCompositionRaw = () => {
                     "archetype_node_id": "at0001",
                     "origin": {
                         "_type": "DV_DATE_TIME",
-                        "value": "2020-03-07T15:26:54.805Z"
+                        "value": doc.documentTime
                     },
                     "events": [
                         {
@@ -746,7 +742,7 @@ const targetCompositionRaw = () => {
                             "archetype_node_id": "at0002",
                             "time": {
                                 "_type": "DV_DATE_TIME",
-                                "value": "2020-03-07T15:26:54.805Z"
+                                "value": doc.documentTime
                             },
                             "data": {
                                 "_type": "ITEM_TREE",
@@ -760,12 +756,24 @@ const targetCompositionRaw = () => {
                                         "_type": "ELEMENT",
                                         "name": {
                                             "_type": "DV_TEXT",
+                                            "value": "Recent travel"
+                                        },
+                                        "archetype_node_id": "at0111",
+                                        "value": {
+                                            "_type": "DV_CODED_TEXT",
+                                            "value": doc.travelHistory.returnDate
+                                        }
+                                    },
+                                    {
+                                        "_type": "ELEMENT",
+                                        "name": {
+                                            "_type": "DV_TEXT",
                                             "value": "Date of return"
                                         },
                                         "archetype_node_id": "at0071",
                                         "value": {
                                             "_type": "DV_DATE_TIME",
-                                            "value": "2020-03-07T15:25:15.946Z"
+                                            "value": doc.travelHistory.returnDate
                                         }
                                     }
                                 ]
@@ -961,74 +969,6 @@ const targetCompositionRaw = () => {
                 "subject": {
                     "_type": "PARTY_SELF"
                 },
-                "other_participations": [
-                    {
-                        "_type": "PARTICIPATION",
-                        "function": {
-                            "_type": "DV_TEXT",
-                            "value": "requester"
-                        },
-                        "performer": {
-                            "_type": "PARTY_IDENTIFIED",
-                            "external_ref": {
-                                "_type": "PARTY_REF",
-                                "id": {
-                                    "_type": "GENERIC_ID",
-                                    "value": "199",
-                                    "scheme": "HOSPITAL-NS"
-                                },
-                                "namespace": "HOSPITAL-NS",
-                                "type": "ANY"
-                            },
-                            "name": "Dr. Marcus Johnson"
-                        },
-                        "mode": {
-                            "_type": "DV_CODED_TEXT",
-                            "value": "face-to-face communication",
-                            "defining_code": {
-                                "_type": "CODE_PHRASE",
-                                "terminology_id": {
-                                    "_type": "TERMINOLOGY_ID",
-                                    "value": "openehr"
-                                },
-                                "code_string": "216"
-                            }
-                        }
-                    },
-                    {
-                        "_type": "PARTICIPATION",
-                        "function": {
-                            "_type": "DV_TEXT",
-                            "value": "performer"
-                        },
-                        "performer": {
-                            "_type": "PARTY_IDENTIFIED",
-                            "external_ref": {
-                                "_type": "PARTY_REF",
-                                "id": {
-                                    "_type": "GENERIC_ID",
-                                    "value": "198",
-                                    "scheme": "HOSPITAL-NS"
-                                },
-                                "namespace": "HOSPITAL-NS",
-                                "type": "ANY"
-                            },
-                            "name": "Lara Markham"
-                        },
-                        "mode": {
-                            "_type": "DV_CODED_TEXT",
-                            "value": "not specified",
-                            "defining_code": {
-                                "_type": "CODE_PHRASE",
-                                "terminology_id": {
-                                    "_type": "TERMINOLOGY_ID",
-                                    "value": "openehr"
-                                },
-                                "code_string": "193"
-                            }
-                        }
-                    }
-                ],
                 "data": {
                     "_type": "ITEM_TREE",
                     "name": {
@@ -1094,14 +1034,14 @@ const targetCompositionRaw = () => {
                                     "archetype_node_id": "at0017",
                                     "value": {
                                         "_type": "DV_CODED_TEXT",
-                                        "value": "Present",
+                                        "value": doc.infectionRiskAssessment.contactConfirmedCaseText,
                                         "defining_code": {
                                             "_type": "CODE_PHRASE",
                                             "terminology_id": {
                                                 "_type": "TERMINOLOGY_ID",
                                                 "value": "local"
                                             },
-                                            "code_string": "at0018"
+                                            "code_string": doc.infectionRiskAssessment.contactConfirmedCaseCode
                                         }
                                     }
                                 }
@@ -1144,14 +1084,14 @@ const targetCompositionRaw = () => {
                                     "archetype_node_id": "at0017",
                                     "value": {
                                         "_type": "DV_CODED_TEXT",
-                                        "value": "Present",
+                                        "value": doc.infectionRiskAssessment.contactSuspectedPneumoniaText,
                                         "defining_code": {
                                             "_type": "CODE_PHRASE",
                                             "terminology_id": {
                                                 "_type": "TERMINOLOGY_ID",
                                                 "value": "local"
                                             },
-                                            "code_string": "at0018"
+                                            "code_string": doc.infectionRiskAssessment.contactSuspectedPneumoniaCode
                                         }
                                     }
                                 }
@@ -1194,14 +1134,14 @@ const targetCompositionRaw = () => {
                                     "archetype_node_id": "at0017",
                                     "value": {
                                         "_type": "DV_CODED_TEXT",
-                                        "value": "Indeterminate",
+                                        "value": doc.infectionRiskAssessment.contactBirdsInChinaText,
                                         "defining_code": {
                                             "_type": "CODE_PHRASE",
                                             "terminology_id": {
                                                 "_type": "TERMINOLOGY_ID",
                                                 "value": "local"
                                             },
-                                            "code_string": "at0026"
+                                            "code_string": doc.infectionRiskAssessment.contactAvianFluCode
                                         }
                                     }
                                 }
@@ -1244,14 +1184,14 @@ const targetCompositionRaw = () => {
                                     "archetype_node_id": "at0017",
                                     "value": {
                                         "_type": "DV_CODED_TEXT",
-                                        "value": "Indeterminate",
+                                        "value": doc.infectionRiskAssessment.contactAvianFluText,
                                         "defining_code": {
                                             "_type": "CODE_PHRASE",
                                             "terminology_id": {
                                                 "_type": "TERMINOLOGY_ID",
                                                 "value": "local"
                                             },
-                                            "code_string": "at0026"
+                                            "code_string": doc.infectionRiskAssessment.contactAvianFluCode
                                         }
                                     }
                                 }
@@ -1294,14 +1234,14 @@ const targetCompositionRaw = () => {
                                     "archetype_node_id": "at0017",
                                     "value": {
                                         "_type": "DV_CODED_TEXT",
-                                        "value": "Present",
+                                        "value": doc.infectionRiskAssessment.contactSevereRespDiseaseText,
                                         "defining_code": {
                                             "_type": "CODE_PHRASE",
                                             "terminology_id": {
                                                 "_type": "TERMINOLOGY_ID",
                                                 "value": "local"
                                             },
-                                            "code_string": "at0018"
+                                            "code_string": doc.infectionRiskAssessment.contactSevereRespDiseaseCode
                                         }
                                     }
                                 }
@@ -1344,14 +1284,14 @@ const targetCompositionRaw = () => {
                                     "archetype_node_id": "at0017",
                                     "value": {
                                         "_type": "DV_CODED_TEXT",
-                                        "value": "Absent",
+                                        "value": doc.infectionRiskAssessment.potentialLocalityExposureText,
                                         "defining_code": {
                                             "_type": "CODE_PHRASE",
                                             "terminology_id": {
                                                 "_type": "TERMINOLOGY_ID",
                                                 "value": "local"
                                             },
-                                            "code_string": "at0019"
+                                            "code_string": doc.infectionRiskAssessment.potentialLocalityExposureCode
                                         }
                                     }
                                 },
@@ -1380,7 +1320,7 @@ const targetCompositionRaw = () => {
                                             "archetype_node_id": "at0007",
                                             "value": {
                                                 "_type": "DV_TEXT",
-                                                "value": "Outbreak  location 11"
+                                                "value": doc.infectionRiskAssessment.potentialOutbreakLocations.locationVisitedText
                                             }
                                         }
                                     ]
@@ -1444,74 +1384,6 @@ const targetCompositionRaw = () => {
                 "subject": {
                     "_type": "PARTY_SELF"
                 },
-                "other_participations": [
-                    {
-                        "_type": "PARTICIPATION",
-                        "function": {
-                            "_type": "DV_TEXT",
-                            "value": "requester"
-                        },
-                        "performer": {
-                            "_type": "PARTY_IDENTIFIED",
-                            "external_ref": {
-                                "_type": "PARTY_REF",
-                                "id": {
-                                    "_type": "GENERIC_ID",
-                                    "value": "199",
-                                    "scheme": "HOSPITAL-NS"
-                                },
-                                "namespace": "HOSPITAL-NS",
-                                "type": "ANY"
-                            },
-                            "name": "Dr. Marcus Johnson"
-                        },
-                        "mode": {
-                            "_type": "DV_CODED_TEXT",
-                            "value": "face-to-face communication",
-                            "defining_code": {
-                                "_type": "CODE_PHRASE",
-                                "terminology_id": {
-                                    "_type": "TERMINOLOGY_ID",
-                                    "value": "openehr"
-                                },
-                                "code_string": "216"
-                            }
-                        }
-                    },
-                    {
-                        "_type": "PARTICIPATION",
-                        "function": {
-                            "_type": "DV_TEXT",
-                            "value": "performer"
-                        },
-                        "performer": {
-                            "_type": "PARTY_IDENTIFIED",
-                            "external_ref": {
-                                "_type": "PARTY_REF",
-                                "id": {
-                                    "_type": "GENERIC_ID",
-                                    "value": "198",
-                                    "scheme": "HOSPITAL-NS"
-                                },
-                                "namespace": "HOSPITAL-NS",
-                                "type": "ANY"
-                            },
-                            "name": "Lara Markham"
-                        },
-                        "mode": {
-                            "_type": "DV_CODED_TEXT",
-                            "value": "not specified",
-                            "defining_code": {
-                                "_type": "CODE_PHRASE",
-                                "terminology_id": {
-                                    "_type": "TERMINOLOGY_ID",
-                                    "value": "openehr"
-                                },
-                                "code_string": "193"
-                            }
-                        }
-                    }
-                ],
                 "data": {
                     "_type": "ITEM_TREE",
                     "name": {

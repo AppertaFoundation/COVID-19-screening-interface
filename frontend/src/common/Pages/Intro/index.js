@@ -1,7 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
+
 import { Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 
@@ -43,6 +44,34 @@ export default () => {
       spacing={6}
     >
       <Warinning />
+      <Grid item spacing={0}>
+        <Typography
+          style={{ color: '#58585A' }}
+          align="center"
+          variant="h2"
+          component="h1"
+        >
+          COVID-19
+        </Typography>
+        <Typography
+          style={{ color: '#58585A' }}
+          align="center"
+          variant="h2"
+          component="h1"
+        >
+          Assessmen
+        </Typography>
+      </Grid>
+      <Grid item spacing={0}>
+        <Typography
+          style={{ color: '#58585A' }}
+          align="center"
+          variant="body1"
+          component="p"
+        >
+          App created in association with... (Lorem ipsum)
+        </Typography>
+      </Grid>
       <Link to="/sign-in">Let's start</Link>
     </Grid>
   );

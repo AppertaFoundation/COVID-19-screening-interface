@@ -63,14 +63,16 @@ export default ({ title, children, open, openAction, handleClose }) => {
         TransitionComponent={Transition}
       >
         <DialogTitle onClose={() => handleClose()}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            onClick={handleClose}
-            aria-label="close"
-          >
-            <CloseIcon />
-          </IconButton>
+          {handleClose && (
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close"
+            >
+              <CloseIcon />
+            </IconButton>
+          )}
           {title}
         </DialogTitle>
         <DialogContent>{children}</DialogContent>
