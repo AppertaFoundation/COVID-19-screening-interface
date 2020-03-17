@@ -73,7 +73,7 @@ export default () => {
             <Grid item>{response.result}</Grid>
             <Grid item>
               <Button type="button" onClick={() => onLogOut()}>
-                Create New Assessment
+                Finish assessment
               </Button>
             </Grid>
           </Grid>
