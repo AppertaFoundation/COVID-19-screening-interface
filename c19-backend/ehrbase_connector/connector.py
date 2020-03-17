@@ -17,24 +17,24 @@ class OpenEHRConnector(object):
     def _url(self, suffix):
         return self.base_url + suffix
 
-    def get(self, *, path, params=None, **kwargs):
+    def get(self, path, params=None, **kwargs):
         # TODO also pass auth=(user, pass) once basic auth implemented
         return requests.get(self._url(path), params=None, **kwargs)
 
-    def post(self, *, path, data=None, json=None, **kwargs):
+    def post(self, path, data=None, json=None, **kwargs):
         # TODO also pass auth=(user, pass) once basic auth implemented
         return requests.post(self._url(path), data=data, json=json, **kwargs)
 
 
 @attr.s(frozen=True)
 class OpenEHRAPI(object):
-    connector = attr.ib()
+    connection = attr.ib()
 
-    def ehr_id_from_nhs_number(self, *, nhs_number: str):
+    def ehr_id_for_nhs_number(self, *, nhs_number: str):
         def ehr_already_existed(status_code):
             return status_code == 409  # Conflict
         nhs_number_namespace = 'uk.nhs.number'
-        creation_response = self.connector.post(
+        creation_response = self.connection.post(
             '/ehrbase/rest/openehr/v1/ehr',
             json={
                 "_type": "EHR_STATUS",
@@ -60,7 +60,7 @@ class OpenEHRAPI(object):
             # For now even if the POST was successful we have to GET because
             # EHRBase sends empty body with status 204 instead of 201 with some
             # JSON
-            fetch_response = self.connector.get(
+            fetch_response = self.connection.get(
                 '/ehrbase/rest/openehr/v1/ehr',
                 params={
                     'subject_id': nhs_number,
