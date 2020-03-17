@@ -7,7 +7,6 @@ from ehrbase_connector.connector import OpenEHRAPI
 from . import ehrbase
 
 class CovidScreenListView(APIView):
-
     def post(self, request, format=None):
         if patient := request.user.c19_api_patient_profile:
             ehr_api = OpenEHRAPI(connection=ehrbase.CONNECTION)
