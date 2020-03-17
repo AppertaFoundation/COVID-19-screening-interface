@@ -71,8 +71,8 @@ or anything else that runs Docker.
 
 For typical Linux systems, an up to date Docker can be installed as follows:
 
-1. curl -fsSL https://get.docker.com -o /tmp/get.docker.sh 
-2. sudo sh /tmp/get.docker.sh 
+1. ```curl -fsSL https://get.docker.com -o /tmp/get.docker.sh ```
+2. ```sudo sh /tmp/get.docker.sh ```
 
 Other installation information can be found here: https://docs.docker.com/install/
 
@@ -83,9 +83,9 @@ ehrbase can be installed using the docker-compose file here: https://github.com/
 In summary:
 
 1. Download the ehrbase compose file:
-    - git clone https://github.com/OpusVL/ehrbase.git
-3. cd ehrbase
-4. docker-compose up -d
+    - ```git clone https://github.com/OpusVL/ehrbase.git```
+3. ```cd ehrbase```
+4. ```docker-compose up -d```
 
 ### Screening application
 
@@ -100,8 +100,8 @@ cd COVID-19-screening-interface/frontend/
 
 The docker-compose.yml brings in the back-end and runtime dependacies.
 
-1. cd c19-backend 
-2. docker build -t quay.io/opusvl/c19:dev .
+1. ```cd c19-backend```
+2. ```docker build -t quay.io/opusvl/c19:dev .```
 
 > The compose should be considered unstable, paths and config will change.
 
