@@ -4,7 +4,7 @@ from django.db import models
 class C19APIPatientProfile(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
-        related_name='c19_api_user_profile',
+        related_name='c19_api_patient_profile',
         on_delete=models.CASCADE)
     # Need for this might disappear once using NHS login
     patient_nhs_number = models.TextField()
