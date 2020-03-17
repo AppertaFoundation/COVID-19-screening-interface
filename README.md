@@ -175,8 +175,8 @@ Many people are involved in this project directly and indirectly and it builds o
 
 ### openEHR clinical modelling
 
-- Ian McNicoll (FreshEHR)
-- Alan Fish (Apperta)
+- Ian McNicoll ([openEHR](https://www.openehr.org/),[FreshEHR](https://freshehr.com/))
+- Alan Fish ([Apperta](https://apperta.org/))
 
 ### Clinical design
 
@@ -184,19 +184,19 @@ Many people are involved in this project directly and indirectly and it builds o
 
 ### System development
 
-- James C - Developer (OpusVL)
-- Adrianna - Front-end engineer (OpusVL)
-- Darren Wilson - User Experience (UX Centric)
-- Paul B - Infrastructure engineer (OpusVL)
-- Nick - Developer (OpusVL)
-- Paul W - Developer (OpusVL)
+- James C - Developer ([OpusVL](https://opusvl.com)
+- Adrianna - Front-end engineer ([OpusVL](https://opusvl.com)
+- Darren Wilson - User Experience ([UX Centric](https://www.uxcentric.co.uk/))
+- Paul B - Infrastructure engineer ([OpusVL](https://opusvl.com)
+- Nick - Developer ([OpusVL](https://opusvl.com)
+- Paul W - Developer ([OpusVL](https://opusvl.com)
 - Matt S - Developer (RBC/community)
 
 ### Project management
 
-- David Jobling - Project co-ordinator / analyst (Apperta)
-- JJ - Architect / project director (OpusVL)
-- Stuart Mackintosh (OpusVL)
+- David Jobling - Project co-ordinator / analyst ([Apperta](https://apperta.org/))
+- JJ - Architect / project director ([OpusVL](https://opusvl.com))
+- Stuart Mackintosh ([OpusVL](https://opusvl.com)
 
 ## Contact
 
