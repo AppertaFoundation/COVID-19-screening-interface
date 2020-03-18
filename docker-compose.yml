@@ -17,6 +17,7 @@ services:
       - django_postgres
     networks:
       - django_net
+      - ehrbase_net
 
   django_postgres:
     image: postgres:12
