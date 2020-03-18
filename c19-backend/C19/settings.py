@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'corsheaders',
     'rest_framework',
+
     'api',
 ]
 
@@ -49,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'C19.urls'
@@ -107,12 +111,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-        # 'rest_framework.permissions.DjangoModelPermissions',
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',  # until we have OAuth
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
 
@@ -136,5 +137,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 EHRBASE_CONNECTION_PARAMS = dict(
-    base_url=os.environ['C19_API_EHRBASE_URL'],
+    base_url=os.environ['C19_BACKEND_EHRBASE_URL'],
 )
+
+CORS_ORIGIN_WHITELIST = tuple(
+    os.environ['C19_BACKEND_CORS_ORIGIN_WHITELIST'].split('|'))

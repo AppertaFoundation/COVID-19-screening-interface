@@ -7,7 +7,8 @@ services:
       DJANGO_POSTGRES_PASSWORD: ${DJANGO_POSTGRES_PASSWORD}
       DJANGO_POSTGRES_DB: ${DJANGO_POSTGRES_DB}
       C19_BACKEND_SECRET_KEY: ${C19_BACKEND_SECRET_KEY}
-      C19_API_EHRBASE_URL: http://ehrbase:8080
+      C19_BACKEND_EHRBASE_URL: http://ehrbase:8080
+      C19_BACKEND_CORS_ORIGIN_WHITELIST: ${C19_BACKEND_CORS_ORIGIN_WHITELIST}
       # volumes:
       #   - ./django/C19:/app
     ports:
@@ -16,6 +17,7 @@ services:
       - django_postgres
     networks:
       - django_net
+      - ehrbase_net
 
   django_postgres:
     image: postgres:12

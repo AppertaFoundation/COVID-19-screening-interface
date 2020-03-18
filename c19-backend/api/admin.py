@@ -2,24 +2,22 @@ from django import forms
 from django.contrib import admin
 
 # Register your models here.
-from api.models import C19APIUserProfile
+from api.models import C19APIPatientProfile
 
-class C19APIUserProfileAdminForm(forms.ModelForm):
+class C19APIPatientProfileAdminForm(forms.ModelForm):
     class Meta:
-        model = C19APIUserProfile
+        model = C19APIPatientProfile
         fields = (
             'user',
-            'clinical_author_name',
-            'clinical_author_id',
+            'patient_nhs_number',
         )
         widgets = {
-            'clinical_author_name': forms.TextInput(),
-            'clinical_author_id': forms.TextInput(),
+            'patient_nhs_number': forms.TextInput(),
         }
 
 
-class C19APIUserProfileAdmin(admin.ModelAdmin):
-    form = C19APIUserProfileAdminForm
-    list_display = ('user', 'clinical_author_name', 'clinical_author_id')
+class C19APIPatientProfileAdmin(admin.ModelAdmin):
+    form = C19APIPatientProfileAdminForm
+    list_display = ('user', 'patient_nhs_number')
 
-admin.site.register(C19APIUserProfile, C19APIUserProfileAdmin)
+admin.site.register(C19APIPatientProfile, C19APIPatientProfileAdmin)

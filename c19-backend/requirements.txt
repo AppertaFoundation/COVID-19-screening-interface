@@ -6,3 +6,4 @@ pydevd-pycharm~=193.6494.30
 toolz
 attrs
 djangorestframework-simplejwt==4.4.0
+django-cors-headers==3.2.1
