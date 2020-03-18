@@ -137,7 +137,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 EHRBASE_CONNECTION_PARAMS = dict(
-    base_url=os.environ['C19_API_EHRBASE_URL'],
+    base_url=os.environ['C19_BACKEND_EHRBASE_URL'],
 )
 
 CORS_ORIGIN_WHITELIST = tuple(
