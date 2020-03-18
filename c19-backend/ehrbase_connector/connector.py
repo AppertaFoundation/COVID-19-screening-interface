@@ -64,7 +64,7 @@ class OpenEHRAPI(object):
                 params={
                     'subject_id': nhs_number,
                     'subject_namespace': nhs_number_namespace,
-                }
+                },
             )
             if fetch_response.status_code == requests.codes.ok:
                 return fetch_response.json()['ehr_id']['value']
