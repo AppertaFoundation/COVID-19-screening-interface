@@ -8,23 +8,15 @@ from . import ehrbase
 
 class CovidScreenListView(APIView):
     def post(self, request, format=None):
-        if patient := request.user.c19_api_patient_profile:
-            ehr_api = OpenEHRAPI(connection=ehrbase.CONNECTION)
-            ehr_id = ehr_api.ehr_id_for_nhs_number(
-                nhs_number=patient.patient_nhs_number)
-            return Response(
-                data={
-                    # TODO we probably won't send the nhs number back,
-                    #  this is just for stubbing to check the code branches
-                    'nhs_number': patient.patient_nhs_number,
-                    'ehr_id': ehr_id,
-                },
-            )
-        else:
-            return Response(
-                data={
-                    'status': 'Permission Denied',
-                    'error': 'No patient profile record for user',
-                },
-                status=403,
-            )
+        screening_data = request.data
+        ehr_api = OpenEHRAPI(connection=ehrbase.CONNECTION)
+        ehr_id = ehr_api.ehr_id_for_nhs_number(
+            nhs_number=screening_data['nhs_number'])
+        return Response(
+            data={
+                # TODO we probably won't send the nhs number back,
+                #  this is just for stubbing to check the code branches
+                'nhs_number': screening_data['nhs_number'],
+                'ehr_id': ehr_id,
+            },
+        )
