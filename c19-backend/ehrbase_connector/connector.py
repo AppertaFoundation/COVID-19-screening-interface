@@ -53,10 +53,9 @@ class OpenEHRAPI(object):
                 "is_queryable": "true",
             },
         )
-        if (
-            creation_response.status_code == requests.codes.ok
-            or ehr_already_existed(status_code=creation_response.status_code)
-        ):
+        if creation_response.status_code == requests.codes.ok \
+           or ehr_already_existed(status_code=creation_response.status_code)\
+        :
             # For now even if the POST was successful we have to GET because
             # EHRBase sends empty body with status 204 instead of 201 with some
             # JSON
