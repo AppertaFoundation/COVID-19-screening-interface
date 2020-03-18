@@ -18,5 +18,8 @@ class CovidScreenListView(APIView):
                 #  this is just for stubbing to check the code branches
                 'nhs_number': screening_data['nhs_number'],
                 'ehr_id': ehr_id,
+                '_note':
+                    'Just a fake return value for stubbing purposes for now,'
+                    ' and will probably change completely',
             },
         )
