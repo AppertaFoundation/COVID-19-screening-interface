@@ -23,8 +23,8 @@ class CovidScreenListView(APIView):
         else:
             return Response(
                 data={
-                    'status': 'Unauthorized',
+                    'status': 'Permission Denied',
                     'error': 'No patient profile record for user',
                 },
-                status=401,
+                status=403,
             )
