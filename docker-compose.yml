@@ -8,8 +8,8 @@ services:
       DJANGO_POSTGRES_DB: ${DJANGO_POSTGRES_DB}
       C19_BACKEND_SECRET_KEY: ${C19_BACKEND_SECRET_KEY}
       C19_API_EHRBASE_URL: http://ehrbase:8080
-      # volumes:
-      #   - ./django/C19:/app
+    volumes:
+      - ./c19-backend:/app
     ports:
       - ${C19_BACKEND_PORT}:8000
     depends_on:
@@ -55,6 +55,14 @@ services:
     networks:
       - ehrbase_net
     restart: always
+
+  testprovider:
+    stdin_open: true
+    tty: true
+    image: mozilla/oidc-testprovider:oidc_testprovider-latest
+    ports:
+      - "${TESTPROVIDER_PORT}:8080"
+  
 
 networks:
   django_net:
