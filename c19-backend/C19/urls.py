@@ -16,7 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from .views import HomePageView
+
+
 urlpatterns = [
+    path('oidc/', include('mozilla_django_oidc.urls')),
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls'))
+    path('api/', include('api.urls')),
+    path('', HomePageView.as_view(), name='home')
+    
 ]
