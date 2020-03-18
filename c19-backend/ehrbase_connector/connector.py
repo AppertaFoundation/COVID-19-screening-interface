@@ -54,7 +54,7 @@ class OpenEHRAPI(object):
             },
         )
         if (
-            creation_response.status_code == requests.status.ok
+            creation_response.status_code == requests.codes.ok
             or ehr_already_existed(status_code=creation_response.status_code)
         ):
             # For now even if the POST was successful we have to GET because
@@ -67,7 +67,7 @@ class OpenEHRAPI(object):
                     'subject_namespace': nhs_number_namespace,
                 }
             )
-            if fetch_response.status_code == requests.status.ok:
+            if fetch_response.status_code == requests.codes.ok:
                 return fetch_response.json()['ehr_id']['value']
             else:
                 raise APIException(
