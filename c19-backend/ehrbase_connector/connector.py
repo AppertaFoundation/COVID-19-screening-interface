@@ -1,13 +1,9 @@
 # -*- coding: utf-8 -*-
-import logging
 import os
 import requests
 import requests.exceptions
 
 import attr
-
-
-logger = logging.getLogger(__name__)
 
 
 def connect(*, base_url) -> 'OpenEHRConnector':
@@ -19,7 +15,6 @@ class OpenEHRConnector(object):
     base_url = attr.ib()
 
     def _url(self, suffix):
-        logger.debug(f'self.base_url: {self.base_url}')
         return self.base_url + suffix
 
     def get(self, path, params=None, **kwargs):
