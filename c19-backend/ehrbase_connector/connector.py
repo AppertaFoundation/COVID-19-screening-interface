@@ -19,7 +19,7 @@ class OpenEHRConnector(object):
 
     def get(self, path, params=None, **kwargs):
         # TODO also pass auth=(user, pass) once basic auth implemented
-        return requests.get(self._url(path), params=None, **kwargs)
+        return requests.get(self._url(path), params=params, **kwargs)
 
     def post(self, path, data=None, json=None, **kwargs):
         # TODO also pass auth=(user, pass) once basic auth implemented
