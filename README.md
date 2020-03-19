@@ -153,6 +153,8 @@ Solution: run '```yarn```' before '```yarn start```'
 
 ## Installing the covid archetypes into ehrbase
 
+Once you have ehrbase up and running...
+
 It's actually the template you upload, and that's a `.opt` file
 
 ```bash
