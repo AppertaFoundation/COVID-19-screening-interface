@@ -48,7 +48,7 @@ export default ({ history }) => {
             variant="h2"
             component="h1"
           >
-            Assessmen
+            Assessment
           </Typography>
         </Grid>
 

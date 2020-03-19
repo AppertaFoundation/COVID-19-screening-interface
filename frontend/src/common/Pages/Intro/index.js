@@ -59,7 +59,7 @@ export default () => {
           variant="h2"
           component="h1"
         >
-          Assessmen
+          Assessment
         </Typography>
       </Grid>
       <Grid item spacing={0}>
@@ -69,10 +69,10 @@ export default () => {
           variant="body1"
           component="p"
         >
-          App created in association with... (Lorem ipsum)
+          Created by the DITO consortium and openEHR community
         </Typography>
       </Grid>
-      <Link to="/sign-in">Let's start</Link>
+      <Link to="/sign-in">Start a screening demo by clicking here</Link>
     </Grid>
   );
 };
