@@ -7,10 +7,18 @@ services:
       DJANGO_POSTGRES_PASSWORD: ${DJANGO_POSTGRES_PASSWORD}
       DJANGO_POSTGRES_DB: ${DJANGO_POSTGRES_DB}
       C19_BACKEND_SECRET_KEY: ${C19_BACKEND_SECRET_KEY}
+      C19_API_EHRBASE_URL: http://ehrbase:8080
+      OIDC_RP_CLIENT_ID: ${OIDC_RP_CLIENT_ID}
+      OIDC_RP_CLIENT_SECRET: ${OIDC_RP_CLIENT_SECRET}
+      OIDC_RP_SIGN_ALGO: ${OIDC_RP_SIGN_ALGO}
+      OIDC_RP_IDP_SIGN_KEY: ${OIDC_RP_IDP_SIGN_KEY}
+      OIDC_OP_AUTHORIZATION_ENDPOINT: ${OIDC_OP_AUTHORIZATION_ENDPOINT}
+      OIDC_OP_TOKEN_ENDPOINT: ${OIDC_OP_TOKEN_ENDPOINT}
+      OIDC_OP_USER_ENDPOINT: ${OIDC_OP_USER_ENDPOINT}
       C19_BACKEND_EHRBASE_URL: http://ehrbase:8080
       C19_BACKEND_CORS_ORIGIN_WHITELIST: ${C19_BACKEND_CORS_ORIGIN_WHITELIST}
-      # volumes:
-      #   - ./django/C19:/app
+    volumes:
+      - ./c19-backend:/app
     ports:
       - ${C19_BACKEND_PORT}:8000
     depends_on:
@@ -57,6 +65,16 @@ services:
     networks:
       - ehrbase_net
     restart: always
+
+  testprovider:
+    stdin_open: true
+    tty: true
+    image: mozilla/oidc-testprovider:oidc_testprovider-latest
+    ports:
+      - "${TESTPROVIDER_PORT}:8080"
+    networks:
+      - django_net
+  
 
 networks:
   django_net:

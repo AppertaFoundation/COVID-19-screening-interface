@@ -25,7 +25,7 @@ SECRET_KEY = os.environ['C19_BACKEND_SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,10 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'mozilla_django_oidc',
     'corsheaders',
     'rest_framework',
-
     'api',
 ]
 
@@ -60,7 +59,7 @@ ROOT_URLCONF = 'C19.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,6 +138,23 @@ STATIC_URL = '/static/'
 EHRBASE_CONNECTION_PARAMS = dict(
     base_url=os.environ['C19_BACKEND_EHRBASE_URL'],
 )
+
+# mozilla-django-oidc
+
+AUTHENTICATION_BACKENDS = (
+    'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
+)
+
+OIDC_RP_CLIENT_ID = os.environ['OIDC_RP_CLIENT_ID']
+OIDC_RP_CLIENT_SECRET = os.environ['OIDC_RP_CLIENT_SECRET']
+OIDC_RP_SIGN_ALGO = os.environ['OIDC_RP_SIGN_ALGO']
+OIDC_RP_IDP_SIGN_KEY = os.environ['OIDC_RP_IDP_SIGN_KEY']
+OIDC_OP_AUTHORIZATION_ENDPOINT = os.environ['OIDC_OP_AUTHORIZATION_ENDPOINT']
+OIDC_OP_TOKEN_ENDPOINT = os.environ['OIDC_OP_TOKEN_ENDPOINT']
+OIDC_OP_USER_ENDPOINT = os.environ['OIDC_OP_USER_ENDPOINT']
+
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
 
 CORS_ORIGIN_WHITELIST = tuple(
     os.environ['C19_BACKEND_CORS_ORIGIN_WHITELIST'].split('|'))
