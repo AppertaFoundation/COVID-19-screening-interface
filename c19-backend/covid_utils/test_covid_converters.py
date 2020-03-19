@@ -73,5 +73,4 @@ class The_covid_archetype_values(unittest.TestCase):
                 'units': "Cel"
             },
         }
-
         self.assertDictEqual(self.covid_archetype_values, expected)
