@@ -19,7 +19,7 @@ class OpenEHRConnector(object):
 
     def get(self, path, params=None, **kwargs):
         # TODO also pass auth=(user, pass) once basic auth implemented
-        return requests.get(self._url(path), params=None, **kwargs)
+        return requests.get(self._url(path), params=params, **kwargs)
 
     def post(self, path, data=None, json=None, **kwargs):
         # TODO also pass auth=(user, pass) once basic auth implemented
@@ -53,10 +53,9 @@ class OpenEHRAPI(object):
                 "is_queryable": "true",
             },
         )
-        if (
-            creation_response.status_code == requests.status.ok
-            or ehr_already_existed(status_code=creation_response.status_code)
-        ):
+        if creation_response.status_code == requests.codes.ok \
+           or ehr_already_existed(status_code=creation_response.status_code)\
+        :
             # For now even if the POST was successful we have to GET because
             # EHRBase sends empty body with status 204 instead of 201 with some
             # JSON
@@ -65,9 +64,9 @@ class OpenEHRAPI(object):
                 params={
                     'subject_id': nhs_number,
                     'subject_namespace': nhs_number_namespace,
-                }
+                },
             )
-            if fetch_response.status_code == requests.status.ok:
+            if fetch_response.status_code == requests.codes.ok:
                 return fetch_response.json()['ehr_id']['value']
             else:
                 raise APIException(

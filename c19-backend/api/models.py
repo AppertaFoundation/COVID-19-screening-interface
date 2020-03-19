@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.db import models
 
+# TODO probably won't be needed once OAuth is set up
+#  remember to generate migration if you do remove it
 class C19APIPatientProfile(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
