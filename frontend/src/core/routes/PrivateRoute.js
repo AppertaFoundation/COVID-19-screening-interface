@@ -2,8 +2,9 @@ import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 import { AuthContext } from '../context/AuthContext';
+import Layout from '../../common/Layout';
 
-export default ({ component: Component, ...rest }) => {
+export default ({ component: Component, theme, ...rest }) => {
   const { auth } = useContext(AuthContext);
   const { loading } = auth;
 
@@ -18,10 +19,16 @@ export default ({ component: Component, ...rest }) => {
     );
   }
   return (
-      <Route
+    <Route
       {...rest}
       render={routeProps =>
-        auth.data ? <Component {...routeProps} /> : <Redirect to="/welcome" />
+        auth.data ? (
+          <Layout theme={theme}>
+            <Component {...routeProps} />
+          </Layout>
+        ) : (
+          <Redirect to="/intro" />
+        )
       }
     />
   );

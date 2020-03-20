@@ -1,78 +1,62 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
-import { Grid, Typography } from '@material-ui/core';
+import { Typography, Grid, Box } from '@material-ui/core';
+import texts from '../../../resources/texts';
+import DitoLogo from '../../../resources/img/dito.png';
+import Button from '../../Components/Button';
 
-import { Snackbar } from '@material-ui/core';
-import MuiAlert from '@material-ui/lab/Alert';
-
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
-const Warinning = () => {
-  const [open, setOpen] = React.useState(true);
-  const handleClose = () => setOpen(false);
-
-  return (
-    <Snackbar
-      open={open}
-      onClose={handleClose}
-      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-    >
-      <Alert onClose={handleClose} severity="warning">
-        Wipe screen before use
-      </Alert>
-    </Snackbar>
-  );
-};
-const useStyles = makeStyles(theme => ({
-  root: {
-    height: '100vh',
-    backgroundColor: '#9FC9D9'
-  }
-}));
-export default () => {
-  const classes = useStyles();
-
+export default ({ history }) => {
+  const handleCreateAccount = () => history.replace('/check-emergency');
   return (
     <Grid
-      className={classes.root}
       container
       direction="column"
-      justify="center"
+      justify="space-around"
       alignItems="center"
-      spacing={6}
+      style={{ height: '100vh' }}
     >
-      <Warinning />
-      <Grid item spacing={0}>
-        <Typography
-          style={{ color: '#58585A' }}
-          align="center"
-          variant="h2"
-          component="h1"
-        >
-          COVID-19
-        </Typography>
-        <Typography
-          style={{ color: '#58585A' }}
-          align="center"
-          variant="h2"
-          component="h1"
-        >
-          Assessment
-        </Typography>
+      <Grid item>
+        <Box width={200}>
+          <img src={DitoLogo} alt="logo" />
+        </Box>
       </Grid>
-      <Grid item spacing={0}>
-        <Typography
-          style={{ color: '#58585A' }}
-          align="center"
-          variant="body1"
-          component="p"
-        >
-          Created by the DITO consortium and openEHR community
-        </Typography>
+      <Grid item style={{ marginTop: '-150px' }}>
+        <Box width={300}>
+          <Typography
+            style={{ color: '#58585A' }}
+            align="center"
+            variant="h6"
+            component="h2"
+          >
+            {texts.INTRO_TEXT}
+          </Typography>
+        </Box>
       </Grid>
-      <Link to="/sign-in">Start a screening demo by clicking here</Link>
+      <Grid item>
+        <Grid
+          container
+          direction="column"
+          justify="space-around"
+          alignItems="center"
+          spacing={2}
+          style={{ marginTop: 16 }}
+        >
+          <Grid item>
+            <Button
+              width={300}
+              type="success"
+              variant="contained"
+              onClick={handleCreateAccount}
+            >
+              {texts.BUTTON_CREATE_ACCOUNT}{' '}
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button width={300} type="secondary" variant="contained">
+              {texts.BUTTON_SING_IN}{' '}
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
     </Grid>
   );
 };

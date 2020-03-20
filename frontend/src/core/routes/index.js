@@ -1,16 +1,36 @@
 import React from 'react';
-import { Switch, BrowserRouter, Route} from 'react-router-dom';
+import { Switch, BrowserRouter } from 'react-router-dom';
+import theme from '../../common/Layout/theme';
 import PrivateRoute from './PrivateRoute';
+import OpenRoute from './OpenRoute';
 import Authentication from '../../common/Pages/Authentication';
 import Dashboard from '../../common/Pages/Dashboard';
 import Intro from '../../common/Pages/Intro';
+import CheckEmergency from '../../common/Pages/CheckEmergency';
+import Terms from '../../common/Pages/Terms';
+import CreateProfile from '../../common/Pages/CreateProfile';
 
 export default () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/welcome" component={Intro} />
-      <Route path="/sign-in" component={Authentication} />
-      <PrivateRoute path="/" component={Dashboard} />
+      <OpenRoute theme={theme.login} path="/intro" component={Intro} />
+      <OpenRoute
+        theme={theme.login}
+        path="/sign-in"
+        component={Authentication}
+      />
+      <OpenRoute
+        theme={theme.main}
+        path="/check-emergency"
+        component={CheckEmergency}
+      />
+      <OpenRoute theme={theme.main} path="/terms" component={Terms} />
+      <OpenRoute
+        theme={theme.main}
+        path="/create-profile"
+        component={CreateProfile}
+      />
+      <PrivateRoute theme={theme.main} path="/" component={Dashboard} />
     </Switch>
   </BrowserRouter>
 );
