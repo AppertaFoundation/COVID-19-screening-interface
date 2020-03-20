@@ -12,7 +12,7 @@ class The_canonical_covid_composition_structure(unittest.TestCase):
             'symptoms': {
                 'firstSymptomsPresenceCode': "at0.2",
                 'firstSymptomsPresenceText': "Present",
-                'dateOfOnset': "2020-03-11",
+                'dateOfOnset': "2020-03-11T00:00:00Z",
                 'coughPresenceCode': "at0.4",
                 'coughPresenceText': "Unknown",
                 'feverPresenceCode': "at0.3",

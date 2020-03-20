@@ -207,7 +207,7 @@ def canonical_covid_composition(minimal_structure: Mapping) -> dict:
                                                 "archetype_node_id": "at0152",
                                                 "value": {
                                                     "_type": "DV_DATE_TIME",
-                                                    "value": minimal_structure['symptoms']['dateOfOnset'] + 'T00:00:00Z'
+                                                    "value": minimal_structure['symptoms']['dateOfOnset'],
                                                 }
                                             },
                                             {
