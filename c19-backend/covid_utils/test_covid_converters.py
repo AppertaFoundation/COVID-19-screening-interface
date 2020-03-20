@@ -6,6 +6,8 @@ from . import covid_converters as CC
 
 class The_cough_presence_values(unittest.TestCase):
     def test_are_at04_and_Unknown_for_unknown(self):
+        presence = CC.Presence.from_semantic_name(semantic_name='unknown')
+        self.assertEqual(presence.text, 'Unknown', )
         archetype_values = CC.archetype_values_from_presence_field(
             prefix='coughPresence', presence='unknown')
         self.assertDictEqual(

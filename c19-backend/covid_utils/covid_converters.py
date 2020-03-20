@@ -55,3 +55,11 @@ def archetype_values_from_presence_field(prefix: str, presence: str) -> dict:
         prefix+'Code': codes[presence],
         prefix+'Text': presence.capitalize(),
     }
+
+@attr.s(frozen=True)
+class Presence(object):
+    code = attr.ib()
+    text = attr.ib()
+
+    @classmethod
+    def from_semantic_name(cls, semantic_name):
