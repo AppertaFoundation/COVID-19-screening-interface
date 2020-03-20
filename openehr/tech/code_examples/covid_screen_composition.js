@@ -43,6 +43,25 @@ const postCompositionOpenEhrBetter = async () =>{
 };
 
 
+const postCompositionOpenEhrEhrBase = async () =>{
+    try {
+        const result =  await axios({
+            url:  `https://cdr.code4health.org/rest/openehr/v1/composition/ehr/${ehrId}/composition`,
+            method: 'post',
+            headers: {Authorization: apiKEY, contentType: 'application/json',  accept: 'application/json'},
+            data: targetCompositionRaw()
+        });
+        setCompositionId(result.data.compositionUid);
+
+        console.log(`compositionId: ${compositionId}`) ;
+    } catch (err) {
+        console.log(JSON.stringify(err.response));
+        throw new Error('Unable to post Composition: ' + err.response.data);
+
+    }
+};
+
+
 // the ui object which is populated from React UI
 const ui = {
      clinicalAuthorName: "Ian McNicoll",
@@ -225,7 +244,7 @@ const expectedCompositionFlat = () => {
         "suspected_covid-19_risk_assessment/symptoms/fever:0/symptom_sign_name|code": "386661006",
         "suspected_covid-19_risk_assessment/symptoms/fever:0/symptom_sign_name|value": "Fever",
         "suspected_covid-19_risk_assessment/symptoms/fever:0/presence|code":  "at0.3",
-        "suspected_covid-19_risk_assessment/symptoms/fever:0/presence|value":  "Present",
+        "suspected_covid-19_risk_assessment/symptoms/fever:0/presence|value":  "Absent",
 
         "suspected_covid-19_risk_assessment/symptoms/difficulty_breathing:0/symptom_sign_name|code": "267036007",
         "suspected_covid-19_risk_assessment/symptoms/difficulty_breathing:0/symptom_sign_name|value": "Difficulty breathing",
@@ -579,7 +598,7 @@ const expectedCompositionRaw = () =>  {
                                               "archetype_node_id": "at0.1",
                                               "value": {
                                                   "_type": "DV_CODED_TEXT",
-                                                  "value": "Present",
+                                                  "value": "Absent",
                                                   "defining_code": {
                                                       "_type": "CODE_PHRASE",
                                                       "terminology_id": {
