@@ -7,3 +7,4 @@ toolz
 attrs
 djangorestframework-simplejwt==4.4.0
 django-cors-headers==3.2.1
+pytz

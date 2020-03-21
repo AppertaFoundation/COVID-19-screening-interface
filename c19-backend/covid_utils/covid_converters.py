@@ -19,7 +19,7 @@ def covid_archetype_structure(
     return dict(
         clinicalAuthorName=clinical_author_name,
         clinicalAuthorId=clinical_author_id,
-        documentTime=document_date.strftime('%Y-%m-%dT%H:%M:%SZ'),
+        documentTime=document_date.isoformat(),
         bodyTemp=dict(
             magnitude=form_values['body_temperature_degrees_C'],
             units='Cel',

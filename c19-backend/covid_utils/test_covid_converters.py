@@ -1,6 +1,8 @@
 import datetime
 import unittest
 
+import pytz
+
 from . import covid_converters as CC
 
 
@@ -36,7 +38,8 @@ class The_covid_archetype_values(unittest.TestCase):
         self.covid_archetype_values = CC.covid_archetype_structure(
             clinical_author_name='Dr Fred Bloggs',
             clinical_author_id='134-4567',
-            document_date=datetime.datetime(2020, 3, 11, 12, 00, 33),
+            document_date=datetime.datetime(
+                2020, 3, 11, 12, 00, 33, tzinfo=pytz.timezone('UTC')),
             form_values=dict(
                 first_symptoms_presence='present',
                 cough_presence='unknown',
@@ -52,7 +55,7 @@ class The_covid_archetype_values(unittest.TestCase):
         expected = {
             'clinicalAuthorName': "Dr Fred Bloggs",
             'clinicalAuthorId': "134-4567",
-            'documentTime': "2020-03-11T12:00:33Z",
+            'documentTime': "2020-03-11T12:00:33+00:00",
             'symptoms': {
                 'firstSymptomsPresenceCode': "at0.2",
                 'firstSymptomsPresenceText': "Present",
