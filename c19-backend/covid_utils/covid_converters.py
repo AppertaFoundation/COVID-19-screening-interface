@@ -13,13 +13,13 @@ from toolz import dicttoolz
 def covid_archetype_structure(
         clinical_author_name: str,
         clinical_author_id: str,
-        document_date: datetime.datetime,
+        document_time: datetime.datetime,
         form_values: Mapping,
 ) -> dict:
     return dict(
         clinicalAuthorName=clinical_author_name,
         clinicalAuthorId=clinical_author_id,
-        documentTime=document_date.isoformat(),
+        documentTime=document_time.isoformat(),
         bodyTemp=dict(
             magnitude=form_values['body_temperature_degrees_C'],
             units='Cel',
