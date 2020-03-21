@@ -47,7 +47,8 @@ class The_covid_archetype_values(unittest.TestCase):
                 difficulty_breathing_presence='present',
                 sore_throat_presence='present',
                 body_temperature_degrees_C=38.4,
-                date_of_onset=datetime.date(2020, 3, 10)
+                date_of_onset=datetime.datetime(
+                    2020, 3, 10, 0, 0, 0, tzinfo=pytz.timezone('UTC'))
             ),
         )
 
@@ -59,7 +60,7 @@ class The_covid_archetype_values(unittest.TestCase):
             'symptoms': {
                 'firstSymptomsPresenceCode': "at0.2",
                 'firstSymptomsPresenceText': "Present",
-                'dateOfOnset': "2020-03-10",
+                'dateOfOnset': "2020-03-10T00:00:00+00:00",
 
                 'coughPresenceCode': "at0.4",
                 'coughPresenceText': "Unknown",
