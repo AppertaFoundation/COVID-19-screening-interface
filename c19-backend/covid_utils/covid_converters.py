@@ -16,6 +16,21 @@ def covid_archetype_structure(
         document_time: datetime.datetime,
         form_values: Mapping,
 ) -> dict:
+    """
+    :param clinical_author_name: Name of the clinician
+    :param clinical_author_id: The clinician's id
+    :param document_time: Full datetime that document was created
+    :param form_values: {
+            'date_of_onset': date,
+            'first_symptoms_presence': 'present'|'absent'|'unknown',
+            'cough_presence': 'present'|'absent'|'unknown',
+            'fever_presence': 'present'|'absent'|'unknown',
+            'difficulty_breathing_presence': 'present'|'absent'|'unknown',
+            'sore_throat_presence': 'present'|'absent'|'unknown',
+            'body_temperature_degrees_C': float,
+        }
+    :return: simple dict that can be later expanded to canonical composition format
+    """
     return dict(
         clinicalAuthorName=clinical_author_name,
         clinicalAuthorId=clinical_author_id,
