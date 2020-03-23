@@ -24,6 +24,8 @@ class CovidScreenListView(APIView):
         ehr_id = ehr_api.ehr_id_for_nhs_number(nhs_number=nhs_number)
         composition = self._frontend_data_to_composition(
             now=timezone.now(), data_from_frontend=request.data)
+        insertion_result = ehr_api.insert_composition_into_ehr(
+            ehr_id=ehr_id, composition=composition)
         return Response(
             data={
                 # TODO we probably won't send the nhs number back,
@@ -35,6 +37,7 @@ class CovidScreenListView(APIView):
                     ' and will probably change completely',
                 #'_simplified_archetype_structure': simplified_archetype_structure,
                 '_composition': composition,
+                '_created_composition_uid': insertion_result['composition_uid'],
             },
         )
 
