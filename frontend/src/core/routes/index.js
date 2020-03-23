@@ -3,7 +3,6 @@ import { Switch, BrowserRouter } from 'react-router-dom';
 import theme from '../../common/Layout/theme';
 import PrivateRoute from './PrivateRoute';
 import OpenRoute from './OpenRoute';
-import Authentication from '../../common/Pages/Authentication';
 import Dashboard from '../../common/Pages/Dashboard';
 import Intro from '../../common/Pages/Intro';
 import CheckEmergency from '../../common/Pages/CheckEmergency';
@@ -14,11 +13,6 @@ export default () => (
   <BrowserRouter>
     <Switch>
       <OpenRoute theme={theme.login} path="/intro" component={Intro} />
-      <OpenRoute
-        theme={theme.login}
-        path="/sign-in"
-        component={Authentication}
-      />
       <OpenRoute
         theme={theme.main}
         path="/check-emergency"
