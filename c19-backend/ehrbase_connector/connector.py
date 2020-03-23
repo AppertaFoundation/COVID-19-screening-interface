@@ -98,7 +98,7 @@ class OpenEHRAPI(object):
                 f"======================\n"
                 f"HTTP status {response.status_code}\n\n"
                 f"Headers: {pprint.pprint(response.headers)}\n\n"
-                f"Body: {response.text}\n\n"
+                f"Body: {response.text!r}\n\n"
                 f"======================\n"
             )
             raise APIException(api_error_message(
