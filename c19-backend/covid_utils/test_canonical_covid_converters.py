@@ -32,6 +32,15 @@ class The_canonical_covid_composition_structure(unittest.TestCase):
             minimal_structure=simple_structure
         )
 
+    # If you comment this out and mount a filesystem volume to /debug/c19-backend,
+    # you can get hold of the composition data to put into CURL for testing uploads.
+    # def test_dump_to_stdout(self):
+    #     import json
+    #     import os
+    #     os.makedirs('/debug/c19-backend', exist_ok=True)
+    #     with open('/debug/c19-backend/canonical_structure.json', 'w') as debug_file:
+    #         json.dump(self.canonical_structure, debug_file)
+
     def test_is_expanded_version_for_upload_to_ehrbase(self):
         self.maxDiff = None
         expected = {
