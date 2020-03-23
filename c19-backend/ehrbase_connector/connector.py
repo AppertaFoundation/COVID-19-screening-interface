@@ -53,6 +53,7 @@ class OpenEHRAPI(object):
                 "is_queryable": "true",
             },
         )
+        # TODO see if we can use the ETag header from POST rather than doing a separate GET
         if creation_response.status_code == requests.codes.ok \
            or ehr_already_existed(status_code=creation_response.status_code)\
         :
