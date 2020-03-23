@@ -69,11 +69,6 @@ export default ({
               )
             }}
           />
-          {/* <ErrorMsg>
-            {errors &&
-              errors.body_temperature_degrees_C &&
-              'This field is required'}
-          </ErrorMsg> */}
         </>
       }
     >

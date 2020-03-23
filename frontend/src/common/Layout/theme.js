@@ -46,7 +46,8 @@ const main = responsiveFontSizes(
         caption: {
           fontSize: pxToRem(10),
           [breakpoints.up('sm')]: {
-            fontSize: pxToRem(12)
+            color: 'grey',
+            fontSize: pxToRem(14)
           }
         }
       }

@@ -6,6 +6,7 @@ const BUTTON_CONFIRM = 'Confirm';
 const BUTTON_CREATE_ACCOUNT = ' CREATE ACCOUNT';
 const BUTTON_SING_IN = 'SIGN IN';
 const BUTTON_CONTINUE = 'Continue';
+const BUTTON_CONTINUE2 = 'No, Continue';
 
 // Login/ create account
 const INTRO_TEXT = ' Welcome to ....., your digital health provider';
@@ -74,6 +75,191 @@ const TERMS_NHS_NO_INFO =
   'Your NHS number will be used to connect you to your 111 provider or GP practice and improve the advice provided.';
 const REGISTRATION_COMPLETE = 'Registration complete';
 
+// Profile
+const PROFILE_TERMS_TITLE = 'Congratulaitons on your registration....';
+const PROFILE_TERMS_SUBTITLE =
+  'General blurb about need for profile information and consent';
+
+// questions
+const RADIO_OPTIONS = [
+  {
+    id: 'yes',
+    name: 'Yes'
+  },
+  {
+    id: 'no',
+    name: 'No'
+  }
+];
+const PROFILE_TERMS_RADIO = [
+  {
+    name: 'provideA',
+    choices: RADIO_OPTIONS,
+    label: 'Do you provide consent for A?'
+  },
+  {
+    name: 'provideB',
+    choices: RADIO_OPTIONS,
+    label: 'Do you provide consent for B?'
+  },
+  {
+    name: 'provideC',
+    choices: RADIO_OPTIONS,
+    label: 'Do you provide consent for C?'
+  },
+  {
+    name: 'provideD',
+    choices: RADIO_OPTIONS,
+    label: 'Do you provide consent for D?'
+  }
+];
+
+const PROFILE_HEART_TITLE = 'My Health';
+const PROFILE_HEART_SUBTITLE = 'Heart and Circulation';
+const PROFILE_OTHER_SUBTITLE = 'Other';
+const PROFILE_MEDICATION_SUBTITLE = 'My Medication';
+
+const PROFILE_HEART_RADIO = [
+  {
+    name: 'problemsWithHeart',
+    choices: RADIO_OPTIONS,
+    label: 'Do you have any problems with your heart?'
+  },
+  {
+    name: 'hadHeartAtack',
+    choices: RADIO_OPTIONS,
+    label: 'Have you ever had a heart attack?'
+  },
+  {
+    name: 'sufferedStroke',
+    choices: RADIO_OPTIONS,
+    label: 'Do you have an irregular heart beat?'
+  },
+  {
+    name: 'bloodPressureIssue',
+    choices: RADIO_OPTIONS,
+    label:
+      'Do you have a problem with blood pressure or take medication to control it?'
+  }
+];
+
+const PROFILE_MEDICATION_RADIO = [
+  {
+    name: 'problemsWithHeart',
+    choices: RADIO_OPTIONS,
+    label: 'Are you taking blood thinners?'
+  },
+  {
+    name: 'hadHeartAtack',
+    choices: RADIO_OPTIONS,
+    label: 'Are you taking any heart medication that ends in “olol”?'
+  },
+  {
+    name: 'sufferedStroke',
+    choices: RADIO_OPTIONS,
+    label: 'Are you taking any medication that ends in “pril” or “sartan”?'
+  },
+  {
+    name: 'bloodPressureIssue',
+    choices: RADIO_OPTIONS,
+    label: 'Do you take any inhalers for asthma or COPD?'
+  },
+  {
+    name: 'bloodPressureIssue',
+    choices: RADIO_OPTIONS,
+    label:
+      'Do you take insulin or injectable medicine to control blood sugar levels?'
+  }
+];
+
+const PROFILE_OTHER_RADIO = [
+  {
+    name: 'problemsWithHeart',
+    choices: RADIO_OPTIONS,
+    label:
+      'Do you have any problems with your breathing e.g. asthma or chronic obstructive pulmonary disease (COPD)?'
+  },
+  {
+    name: 'hadHeartAtack',
+    choices: RADIO_OPTIONS,
+    label: "Do you have epilepsy or Parkinson's disease?"
+  },
+  {
+    name: 'sufferedStroke',
+    choices: RADIO_OPTIONS,
+    label: 'Do you have Type 1 or Type 2 diabetes?'
+  },
+  {
+    name: 'bloodPressureIssue',
+    choices: RADIO_OPTIONS,
+    label: 'Do you have any thyroid problems?'
+  },
+  {
+    name: 'bloodPressureIssue',
+    choices: RADIO_OPTIONS,
+    label: 'Do you have any kidney problems?'
+  },
+  {
+    name: 'bloodPressureIssue',
+    choices: RADIO_OPTIONS,
+    label: 'Do you have any problems with circulation in your legs?'
+  }
+];
+
+const PROFILE_MEDICATION_INTRO1 =
+  'People take a wide variety of medications, tablets or inhalers. It will help your care to know what medications you take and some are particularly important to know about.';
+const PROFILE_MEDICATION_INTRO2 =
+  'This information could help those looking after you make better decisions about the safest way to look after you.';
+
+const PROFILE_PAST_MEDICAL_TITLE = 'Past Medical History';
+const PROFILE_PAST_MEDICAL_SUBTITLE = 'My Medication Details';
+const PROFILE_PAST_MEDICAL_INTRO =
+  'Are there any other medications you would like us to record that you think are particularly important to you in managing your illness?';
+
+const PROFILE_DASI_TITLE = 'My Fitness and Activity';
+const PROFILE_DASI_SUBTITLE =
+  'Before feeling ill, were you able to do the following?';
+const PROFILE_DASI_RADIO = [
+  {
+    name: 'problemsWithHeart',
+    choices: RADIO_OPTIONS,
+    label: 'Walk around the house'
+  },
+  {
+    name: 'hadHeartAtack',
+    choices: RADIO_OPTIONS,
+    label:
+      'Take care of yourself e.g. eating, dressing, bathing, using the toilet'
+  },
+  {
+    name: 'sufferedStroke',
+    choices: RADIO_OPTIONS,
+    label: 'Take a short walk outside'
+  },
+  {
+    name: 'bloodPressureIssue',
+    choices: RADIO_OPTIONS,
+    label: 'Do light housework e.g. dusting, washing dishes'
+  },
+  {
+    name: 'bloodPressureIssue',
+    choices: RADIO_OPTIONS,
+    label: 'Climb a flight of stairs or walk up a hi'
+  },
+  {
+    name: 'bloodPressureIssue',
+    choices: RADIO_OPTIONS,
+    label: 'Run a short distance'
+  }
+];
+const PROFILE_DISABILITY_TITLE = '‘Special considerations’';
+const PROFILE_DISABILITY_RADIO = {
+  name: 'problemsWithHeart',
+  choices: RADIO_OPTIONS,
+  label: 'Do you have a disability?'
+};
+const PROFILE_COMPLITE = 'Profile complete';
+const BUTTON_ADD_FAMILY = 'Add Family Member';
 export default {
   EMERGENCY_CASES,
   EMERGENCY_CHECK_SUBTITLE,
@@ -98,5 +284,28 @@ export default {
   BUTTON_RESENT_CODE,
   BUTTON_SEND_CODE_INTO_MOBILE,
   BUTTON_CONTINUE,
-  REGISTRATION_COMPLETE
+  REGISTRATION_COMPLETE,
+  PROFILE_TERMS_TITLE,
+  PROFILE_TERMS_SUBTITLE,
+  PROFILE_TERMS_RADIO,
+  PROFILE_HEART_TITLE,
+  PROFILE_HEART_SUBTITLE,
+  PROFILE_HEART_RADIO,
+  PROFILE_OTHER_SUBTITLE,
+  PROFILE_MEDICATION_RADIO,
+  PROFILE_OTHER_RADIO,
+  PROFILE_MEDICATION_SUBTITLE,
+  PROFILE_MEDICATION_INTRO1,
+  PROFILE_MEDICATION_INTRO2,
+  PROFILE_PAST_MEDICAL_TITLE,
+  PROFILE_PAST_MEDICAL_SUBTITLE,
+  PROFILE_PAST_MEDICAL_INTRO,
+  BUTTON_CONTINUE2,
+  PROFILE_DASI_TITLE,
+  PROFILE_DASI_SUBTITLE,
+  PROFILE_DASI_RADIO,
+  PROFILE_DISABILITY_TITLE,
+  PROFILE_DISABILITY_RADIO,
+  PROFILE_COMPLITE,
+  BUTTON_ADD_FAMILY
 };

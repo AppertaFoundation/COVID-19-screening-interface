@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import { AuthContext } from '../../../core/context/AuthContext';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
@@ -11,12 +12,11 @@ export default ({ history }) => {
   const [email, setEmail] = useState('');
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
-
   const handleConfirm = value => {
     // submit action();
     setStep(value);
   };
-  const handleCreateProfile = (data, e) => {
+  const handleCreateProfile = data => {
     setEmail(data.email);
     setStep('step3');
   };

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Typography, Grid, Box } from '@material-ui/core';
 import ReactCodeInput from 'react-code-input';
+import { AuthContext } from '../../../core/context/AuthContext';
 import texts from '../../../resources/texts';
 import Button from '../../Components/Button';
 import Confirmation from './Confirmation';
@@ -17,20 +18,24 @@ const inputStyle = {
 
 export default ({ history, matches, email }) => {
   const [open, setOpen] = useState(false);
+  const { setAuthData } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const handleResendOnMobile = () => console.log('resend code on mobile');
   const handleResend = () => console.log('resend code');
   const setDialogTimeout = () => {
     setOpen(true);
     const timer1 = setTimeout(() => {
       setOpen(false);
-      history.replace('/');
+      history.replace(user.data ? '/' : '/profile');
     }, 1000);
     return () => {
       clearTimeout(timer1);
     };
   };
-  const handleConfirm = () => setDialogTimeout();
-
+  const handleConfirm = () => {
+    setAuthData({ data: true });
+    setDialogTimeout();
+  };
   return (
     <Grid
       container

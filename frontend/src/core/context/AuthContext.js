@@ -4,6 +4,8 @@ export const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({ loading: true, data: null });
+  const [user, setUser] = useState({ data: null });
+  const setUserData = data => setUser(data);
   const setAuthData = data => {
     setAuth({ data });
   };
@@ -17,7 +19,7 @@ const AuthProvider = ({ children }) => {
     window.localStorage.setItem('authData', JSON.stringify(auth.data));
   }, [auth.data]);
   return (
-    <AuthContext.Provider value={{ auth, setAuthData }}>
+    <AuthContext.Provider value={{ auth, setAuthData, user, setUserData }}>
       {children}
     </AuthContext.Provider>
   );

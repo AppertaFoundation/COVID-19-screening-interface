@@ -22,13 +22,22 @@ const ButtonSecondary = withStyles(theme => ({
   }
 }))(MuiButton);
 
+const ButtonPrimmary = withStyles(() => ({
+  contained: {
+    minWidth: '100%',
+    backgroundColor: '#fff',
+    color: '#000'
+  }
+}))(MuiButton);
+
 export default ({ children, color, width, ...rest }) => (
   <Box width={width}>
     {
       {
         // eslint-disable-next-line react/jsx-props-no-spreading
         success: <ButtonSuccess {...rest}>{children}</ButtonSuccess>,
-        secondary: <ButtonSecondary {...rest}>{children}</ButtonSecondary>
+        secondary: <ButtonSecondary {...rest}>{children}</ButtonSecondary>,
+        primmary: <ButtonPrimmary {...rest}>{children}</ButtonPrimmary>
       }[color]
     }
   </Box>
