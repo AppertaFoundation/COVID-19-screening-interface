@@ -1,4 +1,5 @@
 import datetime
+import logging
 
 from django.http import Http404
 from django.utils import timezone
@@ -12,20 +13,17 @@ from covid_utils.covid_converters import covid_archetype_structure
 from ehrbase_connector.connector import OpenEHRAPI
 from . import ehrbase
 
+
+logger = logging.getLogger(__name__)
+
+
 class CovidScreenListView(APIView):
     def post(self, request, format=None):
         nhs_number = request.data['nhs_number']
-        simplified_archetype_structure = covid_archetype_structure(
-            # TODO proper clinical author data for patient self-assessment?
-            clinical_author_name='Patient Self-assessment',
-            clinical_author_id='134-5678',
-            document_time=timezone.now(),
-            form_values=self._expand_posted_form_data(request.data),
-        )
         ehr_api = OpenEHRAPI(connection=ehrbase.CONNECTION)
         ehr_id = ehr_api.ehr_id_for_nhs_number(nhs_number=nhs_number)
-        composition = canonical_covid_composition(
-            minimal_structure=simplified_archetype_structure)
+        composition = self._frontend_data_to_composition(
+            now=timezone.now(), data_from_frontend=request.data)
         return Response(
             data={
                 # TODO we probably won't send the nhs number back,
@@ -35,10 +33,23 @@ class CovidScreenListView(APIView):
                 '_note':
                     'Just a fake return value for stubbing purposes for now,'
                     ' and will probably change completely',
-                '_simplified_archetype_structure': simplified_archetype_structure,
+                #'_simplified_archetype_structure': simplified_archetype_structure,
                 '_composition': composition,
             },
         )
+
+    def _frontend_data_to_composition(self, now, data_from_frontend):
+        simplified_archetype_structure = covid_archetype_structure(
+            # TODO proper clinical author data for patient self-assessment?
+            clinical_author_name='Patient Self-assessment',
+            clinical_author_id='134-5678',
+            document_time=now,
+            form_values=self._expand_posted_form_data(data_from_frontend),
+        )
+        import pprint
+        logger.info(f"simlified_archetype_structure = {pprint.pformat(simplified_archetype_structure)}")
+        return canonical_covid_composition(
+            minimal_structure=simplified_archetype_structure)
 
     def _expand_posted_form_data(self, screening_data_from_request):
         tz_aware_date_of_onset = \
