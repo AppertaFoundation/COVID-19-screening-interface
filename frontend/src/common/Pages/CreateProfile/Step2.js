@@ -1,15 +1,15 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
+
 import { Typography, Grid, Box } from '@material-ui/core';
 import texts from '../../../resources/texts';
 import Button from '../../Components/Button';
 import CreateProfileForm from './CreateProfileForm';
 
 export default ({ matches, handleCreateProfile }) => {
-
+  const { errors, register, handleSubmit, setValue, unregister } = useForm();
   return (
-    <Grid container 
-    spacing={3}
-    >
+    <Grid container spacing={3}>
       <Grid item xs={12}>
         <Typography align="center" variant="h3" component="h2">
           <Box
@@ -21,7 +21,14 @@ export default ({ matches, handleCreateProfile }) => {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <CreateProfileForm />
+        <CreateProfileForm
+          errors={errors}
+          register={register}
+          handleSubmit={handleSubmit}
+          setValue={setValue}
+          unregister={unregister}
+          handleCreateProfile={handleCreateProfile}
+        />
       </Grid>
       <Grid item xs={12}>
         <Box>
@@ -35,7 +42,6 @@ export default ({ matches, handleCreateProfile }) => {
             <Grid item>
               <Button
                 width={300}
-                onClick={data=> handleCreateProfile(data)}
                 color="success"
                 variant="contained"
                 type="submit"

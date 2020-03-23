@@ -1,8 +1,9 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import ErrorMessage from '../ErrorMsg'
 import { Box, TextField } from '@material-ui/core';
-import useWindowDimensions from '../../../core/hooks/useWindowDimensions'
+import ErrorMessage from '../ErrorMsg';
+import useWindowDimensions from '../../../core/hooks/useWindowDimensions';
+
 const styles = {
   input: {
     minWidth: '100%',
@@ -10,10 +11,19 @@ const styles = {
   }
 };
 
-const CustomizedInputs = ({ classes, inputRef, label, name, errors, endAdornment, readOnly, ...props }) => {
+const CustomizedInputs = ({
+  classes,
+  inputRef,
+  label,
+  name,
+  errors,
+  endAdornment,
+  readOnly,
+  ...props
+}) => {
   const { width } = useWindowDimensions();
   return (
-    <Box m={1} width={width-28}>
+    <Box p={1} width={width - 32}>
       <TextField
         label={label}
         readOnly
@@ -22,14 +32,15 @@ const CustomizedInputs = ({ classes, inputRef, label, name, errors, endAdornment
         name={name}
         inputRef={inputRef}
         InputProps={{
+          // eslint-disable-next-line react/destructuring-assignment
           ...props.InputProps,
-          readOnly: readOnly,
+          readOnly,
           className: classes.input,
           endAdornment
         }}
         {...props}
       />
-      <ErrorMessage name={name} errors={errors}/>
+      <ErrorMessage name={name} errors={errors} />
     </Box>
   );
 };

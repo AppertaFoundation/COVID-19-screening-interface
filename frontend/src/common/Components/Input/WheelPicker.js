@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { TextField, InputAdornment, Grid, Box } from '@material-ui/core';
+import Picker from 'react-mobile-picker-scroll';
 import Dialog from '../Dialog';
 import Button from '../Button';
 import ErrorMsg from '../ErrorMsg';
-import Picker from 'react-mobile-picker-scroll';
 
 export default ({
   label,
@@ -12,7 +12,6 @@ export default ({
   optionGroups,
   required,
   register,
-  errors,
   seperator,
   name
 }) => {
@@ -26,12 +25,11 @@ export default ({
     event.preventDefault();
     setOpen(true);
   };
-  const handleChange = (name, value) => {
-    {
-      setValueGroup({ ...valueGroups, [name]: value });
-      setInputValue({ ...valueGroups, [name]: value });
-    }
+  const handleChange = (key, value) => {
+    setValueGroup({ ...valueGroups, [key]: value });
+    setInputValue({ ...valueGroups, [key]: value });
   };
+
   const handleConfirm = () => {
     setInputValue(valueGroups);
     setOpen(false);
@@ -39,12 +37,12 @@ export default ({
   const getValue = () =>
     inputValue
       ? `${inputValue.firstColumn}${seperator ? inputValue.seperator : ''}${
-      inputValue.secondColumn ? inputValue.secondColumn : ''
-      }`
+          inputValue.secondColumn ? inputValue.secondColumn : ''
+        }`
       : '';
   return (
     <Dialog
-      title="Add Temperature"
+      title={label}
       open={open}
       handleClose={handleClose}
       handleOpen={handleConfirm}

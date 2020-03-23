@@ -1,20 +1,22 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Slide from "@material-ui/core/Slide";
+import React from 'react';
+import { withStyles } from '@material-ui/styles';
+import Dialog from '@material-ui/core/Dialog';
+import MuiDialogContent from '@material-ui/core/DialogContent';
+
+import { Grid, Typography, Slide, Box } from '@material-ui/core';
+import RegistrationComplete from '../../../resources/img/registration-complete.png';
+import texts from '../../../resources/texts';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="right" ref={ref} {...props} />;
+  return <Slide direction="down" ref={ref} {...props} />;
 });
 
-export default ({open, setOpen})=>{
-//   const [open, setOpen] = React.useState(false);
-
-
+const DialogContent = withStyles(theme => ({
+  root: {
+    margin: theme.spacing(6)
+  }
+}))(MuiDialogContent);
+export default ({ open, setOpen }) => {
   const handleClose = () => {
     setOpen(false);
   };
@@ -28,9 +30,30 @@ export default ({open, setOpen})=>{
         onClose={handleClose}
       >
         <DialogContent>
-       
+          <Grid
+            container
+            direction="column"
+            justify="space-around"
+            alignItems="center"
+            spacing={2}
+          >
+            <Grid item>
+              <img
+                width={150}
+                src={RegistrationComplete}
+                alt="Registation Complete"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Typography align="center" variant="h6" component="h3">
+                <Box fontWeight="fontWeightMedium">
+                  {texts.REGISTRATION_COMPLETE}
+                </Box>
+              </Typography>
+            </Grid>
+          </Grid>
         </DialogContent>
       </Dialog>
     </>
   );
-}
+};

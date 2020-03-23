@@ -16,7 +16,7 @@ export default ({ nhsNo }) => {
       <Box p={1}>
         <Typography variant="subtitle1" component="div">
           <Box component="div" display="inline" fontWeight="fontWeightBold">
-            nhsNo: 
+            nhsNo:
           </Box>
           {nhsNo}
         </Typography>

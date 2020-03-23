@@ -1,5 +1,4 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import { Grid, Box, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import MuiPaper from '@material-ui/core/Paper';
@@ -14,14 +13,16 @@ const WhitePaper = withStyles({
   }
 })(MuiPaper);
 
-export default () => {
-  const { errors, register, handleSubmit, setValue, unregister } = useForm()
-  const onSubmit = (data, e) => {
-    e.preventDefault();
-    console.log(data)
-  }
+export default ({
+  errors,
+  register,
+  handleSubmit,
+  setValue,
+  unregister,
+  handleCreateProfile
+}) => {
   return (
-    <form onSubmit={handleSubmit(onSubmit)} id='create-profile'>
+    <form onSubmit={handleSubmit(handleCreateProfile)} id="create-profile">
       <WhitePaper elevation={0}>
         <Grid
           container
@@ -37,7 +38,12 @@ export default () => {
             </Box>
           </Grid>
           <Grid item>
-            <Input errors={errors} label="Surname" name="surname" inputRef={register({ required: "This is required field" })} />
+            <Input
+              errors={errors}
+              label="Surname"
+              name="surname"
+              inputRef={register({ required: 'This is required field' })}
+            />
           </Grid>
           <Grid item>
             <DatePicker
@@ -47,13 +53,13 @@ export default () => {
               unregister={unregister}
               required="This is required field"
               name="birth"
-              label='Date of Birth'
+              label="Date of Birth"
             />
           </Grid>
 
           <Grid item>
             <SimplySelect
-              label='Gender'
+              label="Gender"
               required="This is required field"
               errors={errors}
               options={[
@@ -61,25 +67,51 @@ export default () => {
                 { value: 'male', name: 'Male' },
                 { value: 'noAnswer', name: 'Prefer not to answer' }
               ]}
-              name='gender'
+              name="gender"
               register={register}
               setValue={setValue}
-              unregister={unregister} />
+              unregister={unregister}
+            />
           </Grid>
           <Grid item>
-            <Input errors={errors} label="Postcode" name="postcode" inputRef={register({ required: "This is required field" })} />
+            <Input
+              errors={errors}
+              label="Postcode"
+              name="postcode"
+              inputRef={register({ required: 'This is required field' })}
+            />
           </Grid>
           <Grid item>
-            <Input errors={errors} label="Email" name="email" inputRef={register({ required: "This is required field" })} />
+            <Input
+              errors={errors}
+              label="Email"
+              name="email"
+              inputRef={register({ required: 'This is required field' })}
+            />
           </Grid>
           <Grid item>
-            <Input errors={errors} label="Mobile phone" name="surname" inputRef={register({ required: "This is required field" })} />
+            <Input
+              errors={errors}
+              label="Mobile phone"
+              name="surname"
+              inputRef={register({ required: 'This is required field' })}
+            />
           </Grid>
           <Grid item>
-            <Input errors={errors} label="Password" name="password" inputRef={register({ required: "This is required field" })} />
+            <Input
+              errors={errors}
+              label="Password"
+              name="password"
+              inputRef={register({ required: 'This is required field' })}
+            />
           </Grid>
           <Grid item>
-            <Input errors={errors} label="Confirm Password" name="confirmPassword" inputRef={register({ required: "This is required field" })} />
+            <Input
+              errors={errors}
+              label="Confirm Password"
+              name="confirmPassword"
+              inputRef={register({ required: 'This is required field' })}
+            />
           </Grid>
         </Grid>
       </WhitePaper>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography, Grid, Box } from '@material-ui/core';
 import ReactCodeInput from 'react-code-input';
 import texts from '../../../resources/texts';
@@ -15,7 +15,7 @@ const inputStyle = {
 };
 
 export default ({ matches, handleConfirmNhsNo, handleConfirmNoNhsNo }) => {
-
+  const [nhsNo, setNhsNo] = useState('');
   return (
     <Grid
       container
@@ -43,9 +43,11 @@ export default ({ matches, handleConfirmNhsNo, handleConfirmNoNhsNo }) => {
       </Grid>
       <Grid item xs={12}>
         <ReactCodeInput
-          type="number"
           fields={11}
+          value={nhsNo}
+          onChange={setNhsNo}
           {...(matches ? {} : { inputStyle })}
+          required
         />
       </Grid>
       <Grid item xs={12}>
@@ -58,7 +60,11 @@ export default ({ matches, handleConfirmNhsNo, handleConfirmNoNhsNo }) => {
             spacing={2}
           >
             <Grid item>
-              <Button width={150} onClick={handleConfirmNhsNo} color="secondary">
+              <Button
+                width={150}
+                onClick={handleConfirmNhsNo}
+                color="secondary"
+              >
                 {texts.CREATE_PROFILE_NO_NHS_BUTTON}
               </Button>
             </Grid>
@@ -67,6 +73,7 @@ export default ({ matches, handleConfirmNhsNo, handleConfirmNoNhsNo }) => {
                 width={150}
                 color="success"
                 variant="contained"
+                disabled={nhsNo.length !== 11}
                 onClick={handleConfirmNoNhsNo}
               >
                 {texts.BUTTON_CONFIRM}

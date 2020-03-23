@@ -6,17 +6,17 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
   root: {
     color: '#bf1650'
-  },
+  }
 });
 
-
-export default ({name, errors}) => {
+export default ({ name, errors }) => {
   const classes = useStyles();
 
   return (
     <Box m={1}>
       <ErrorMessage name={name} errors={errors}>
         {({ message }) => <p className={classes.root}>{message}</p>}
-      </ErrorMessage>  </Box>
+      </ErrorMessage>{' '}
+    </Box>
   );
-}
+};
