@@ -12,11 +12,6 @@ Being Open Source, the application can be implemented within an organisation usi
 
 Being modular, the application can be connected to an existing openEHR repository or operated with a stand-alone repository.
 
-Demo of front-end alpha product: https://adabedi.github.io/c19-demo/ - note, unstable
-
-- [Screening question screenshot](https://github.com/AppertaFoundation/COVID-19-screening-interface/blob/master/frontend/screenshots/screening-questions.png)
-- [Screening date screenshot](https://github.com/AppertaFoundation/COVID-19-screening-interface/blob/master/frontend/screenshots/screening-questions-date.png)
-
 ## Project aims
 
 The aims of this project are:
