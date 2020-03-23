@@ -5,6 +5,7 @@ const BUTTON_CANCEL = 'Cancel';
 const BUTTON_CONFIRM = 'Confirm';
 const BUTTON_CREATE_ACCOUNT = ' CREATE ACCOUNT';
 const BUTTON_SING_IN = 'SIGN IN';
+const BUTTON_CONTINUE = 'Continue'
 // Login/ create account
 const INTRO_TEXT = ' Welcome to ....., your digital health provider';
 const ACCEPT_TERMS = 'Agree & Continue';
@@ -62,7 +63,11 @@ const CREATE_PROFILE_TITLE = 'Create Profile';
 const CREATE_PROFILE_NO_NHS_BUTTON = 'I don’t know it';
 const CREATE_PROFILE_SUBTITLE_NHS_NO = 'Enter your NHS number';
 const CREATE_PROFILE_SUBTITLE = 'General Information';
-
+const VERIFY_IDENTITY_TITLE = 'Verify Your Identity'
+const VERIFY_IDENTITY_SUBTITLE= 'We’ve emailed you a verification code'
+const VERIFY_IDENTITY_TEXT = 'Please check your email da**********@g*****.com for a six-digit code and enter it in the box below to log in to your new health profile'
+const BUTTON_RESENT_CODE = 'Resend code'
+const BUTTON_SEND_CODE_INTO_MOBILE = 'Send to mobile phone instead'
 const TERMS_NHS_NO_INFO =
   'Your NHS number will be used to connect you to your 111 provider or GP practice and improve the advice provided.';
 export default {
@@ -82,5 +87,11 @@ export default {
   CREATE_PROFILE_NO_NHS_BUTTON,
   BUTTON_CONFIRM,
   CREATE_PROFILE_SUBTITLE_NHS_NO,
-  CREATE_PROFILE_SUBTITLE
+  CREATE_PROFILE_SUBTITLE,
+  VERIFY_IDENTITY_SUBTITLE,
+  VERIFY_IDENTITY_TEXT,
+  VERIFY_IDENTITY_TITLE,
+  BUTTON_RESENT_CODE,
+  BUTTON_SEND_CODE_INTO_MOBILE,
+  BUTTON_CONTINUE
 };

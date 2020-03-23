@@ -1,8 +1,22 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
+import { ErrorMessage } from 'react-hook-form';
+import { makeStyles } from '@material-ui/core/styles';
 
-export default ({ children }) => (
-  <Box m={1}>
-    <span style={{ color: 'red' }}>{children}</span>
-  </Box>
-);
+const useStyles = makeStyles({
+  root: {
+    color: '#bf1650'
+  },
+});
+
+
+export default ({name, errors}) => {
+  const classes = useStyles();
+
+  return (
+    <Box m={1}>
+      <ErrorMessage name={name} errors={errors}>
+        {({ message }) => <p className={classes.root}>{message}</p>}
+      </ErrorMessage>  </Box>
+  );
+}

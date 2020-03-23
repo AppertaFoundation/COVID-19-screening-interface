@@ -4,11 +4,12 @@ import texts from '../../../resources/texts';
 import Button from '../../Components/Button';
 import CreateProfileForm from './CreateProfileForm';
 
-export default ({ matches, handleConfirm }) => {
-  const handleConfirmNhsNo = () => handleConfirm('step2NhsNo');
+export default ({ matches, handleCreateProfile }) => {
 
   return (
-    <Grid container>
+    <Grid container 
+    spacing={3}
+    >
       <Grid item xs={12}>
         <Typography align="center" variant="h3" component="h2">
           <Box
@@ -34,9 +35,11 @@ export default ({ matches, handleConfirm }) => {
             <Grid item>
               <Button
                 width={300}
-                onClick={handleConfirmNhsNo}
-                type="success"
+                onClick={data=> handleCreateProfile(data)}
+                color="success"
                 variant="contained"
+                type="submit"
+                form="create-profile"
               >
                 {texts.BUTTON_CONFIRM}
               </Button>

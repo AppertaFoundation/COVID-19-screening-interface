@@ -78,7 +78,7 @@ export default ({ history }) => {
             <Grid item>
               <Button
                 width={300}
-                type="success"
+                color="success"
                 variant="contained"
                 onClick={handleAcceptTerms}
               >

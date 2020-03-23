@@ -1,7 +1,5 @@
 import React from 'react';
 import { Typography, Grid, Box } from '@material-ui/core';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
 import ReactCodeInput from 'react-code-input';
 import texts from '../../../resources/texts';
 import Button from '../../Components/Button';
@@ -16,9 +14,7 @@ const inputStyle = {
   paddingLeft: '5px'
 };
 
-export default ({ matches, handleConfirm }) => {
-  const handleConfirmNhsNo = () => handleConfirm('step2NhsNo');
-  const handleConfirmNoNhsNo = () => handleConfirm('step2NoNhsNo');
+export default ({ matches, handleConfirmNhsNo, handleConfirmNoNhsNo }) => {
 
   return (
     <Grid
@@ -62,14 +58,14 @@ export default ({ matches, handleConfirm }) => {
             spacing={2}
           >
             <Grid item>
-              <Button width={150} onClick={handleConfirmNhsNo} type="secondary">
+              <Button width={150} onClick={handleConfirmNhsNo} color="secondary">
                 {texts.CREATE_PROFILE_NO_NHS_BUTTON}
               </Button>
             </Grid>
             <Grid item>
               <Button
                 width={150}
-                type="success"
+                color="success"
                 variant="contained"
                 onClick={handleConfirmNoNhsNo}
               >

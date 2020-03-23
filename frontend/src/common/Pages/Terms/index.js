@@ -72,7 +72,7 @@ export default ({ history }) => {
       </Grid>
 
       <Grid item xs={12}>
-        <Box>
+        <Box width={300}>
           <Grid
             container
             direction="row"
@@ -83,7 +83,7 @@ export default ({ history }) => {
             <Grid item>
               <Button
                 width={300}
-                type="success"
+                color="success"
                 variant="contained"
                 onClick={handleAccept}
               >
@@ -91,7 +91,7 @@ export default ({ history }) => {
               </Button>
             </Grid>
             <Grid item>
-              <Button width={300} onClick={handleCancel} type="secondary">
+              <Button width={300} onClick={handleCancel} color="secondary">
                 {texts.BUTTON_CANCEL}
               </Button>
             </Grid>

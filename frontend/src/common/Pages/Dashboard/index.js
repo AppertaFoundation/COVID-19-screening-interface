@@ -135,7 +135,6 @@ export default () => {
               errors={errors}
               register={register}
               required
-              control={control}
               name="date_of_onset"
             />
           </Box>

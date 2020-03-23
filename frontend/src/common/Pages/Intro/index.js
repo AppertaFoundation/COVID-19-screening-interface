@@ -43,7 +43,7 @@ export default ({ history }) => {
           <Grid item>
             <Button
               width={300}
-              type="success"
+              color="success"
               variant="contained"
               onClick={handleCreateAccount}
             >
@@ -51,7 +51,7 @@ export default ({ history }) => {
             </Button>
           </Grid>
           <Grid item>
-            <Button width={300} type="secondary" variant="contained">
+            <Button width={300} color="secondary" variant="contained">
               {texts.BUTTON_SING_IN}{' '}
             </Button>
           </Grid>

@@ -1,46 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DateFnsUtils from '@date-io/date-fns';
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { TextField, Input } from '@material-ui/core';
-import ErrorMsg from '../ErrorMsg/';
+import Input from '../Input/Input'
 
 export default ({
-  label = 'Date symptomps first apeared',
-  placeholder = 'Date symptomps first apeared',
-  required = true,
+  label,
+  placeholder,
+  required,
   register,
   errors,
+  setValue,
+  unregister,
   name
 }) => {
-  const [selectedDate, handleDateChange] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
   const [open, setOpen] = useState(false);
   const handleOpen = event => {
     event.preventDefault();
     setOpen(true);
   };
+  useEffect(() => {
+    register({ name: name }, { required: required });
+    return () => unregister(name); // unregister input after component unmount
+  }, [register])
 
+  const handleDateChange = date => {
+    setSelectedDate(date)
+    setValue(name, date)
+  }
   const renderInput = props => (
-    <>
-      <TextField
-        name={name}
-        label={label}
-        placeholder={placeholder}
-        value={props.value}
-        inputRef={register({ required })}
-        onClick={event => handleOpen(event)}
-        onTouchEnd={event => handleOpen(event)}
-        onKeyUp={() => handleOpen()}
-        variant="outlined"
-        style={{ width: '100%' }}
-        autoComplete="off"
-        InputProps={{
-          readOnly: true
-        }}
-      />
-      <ErrorMsg>
-        {errors && errors.date_of_onset && 'This field is required'}
-      </ErrorMsg>
-    </>
+    <Input
+      name={name}
+      label={label}
+      placeholder={placeholder}
+      value={props.value}
+      onClick={event => handleOpen(event)}
+      onTouchEnd={event => handleOpen(event)}
+      onKeyUp={() => handleOpen()}
+      variant="outlined"
+      autoComplete="off"
+      readOnly
+      errors={errors}
+    />
+
   );
 
   return (
