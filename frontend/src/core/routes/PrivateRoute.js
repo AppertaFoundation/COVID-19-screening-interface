@@ -22,13 +22,14 @@ export default ({ component: Component, theme, ...rest }) => {
     <Route
       {...rest}
       render={routeProps =>
-        auth.data ? (
-          <Layout theme={theme}>
-            <Component {...routeProps} />
-          </Layout>
-        ) : (
-          <Redirect to="/intro" />
-        )
+        auth.data
+          ? (
+            <Layout theme={theme}>
+              <Component {...routeProps} />
+            </Layout>
+          ) : (
+            <Redirect to="/intro" />
+          )
       }
     />
   );

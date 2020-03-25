@@ -1,85 +1,51 @@
-import React, { useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+
 import { Typography, Grid, Box } from '@material-ui/core';
-import ReactCodeInput from 'react-code-input';
-import { AuthContext } from '../../../core/context/AuthContext';
 import texts from '../../../resources/texts';
 import Button from '../../Components/Button';
-import Confirmation from './Confirmation';
+import CreateProfileForm from './CreateProfileForm';
 
-const inputStyle = {
-  fontFamily: 'monospace',
-  margin: '4px',
-  MozAppearance: 'textfield',
-  width: '20px',
-  fontSize: '14px',
-  height: '32px',
-  paddingLeft: '5px'
-};
+export default ({ matches, handleCreateProfile }) => {
+  const { errors, register, handleSubmit, setValue, unregister, noNhsNo, watch } = useForm();
+  const [valid, setValid] = useState(false);
+  const watchedValues = watch();
 
-export default ({ history, matches, email }) => {
-  const [open, setOpen] = useState(false);
-  const { setAuthData } = useContext(AuthContext);
-  const { user } = useContext(AuthContext);
-  const handleResendOnMobile = () => console.log('resend code on mobile');
-  const handleResend = () => console.log('resend code');
-  const setDialogTimeout = () => {
-    setOpen(true);
-    const timer1 = setTimeout(() => {
-      setOpen(false);
-      history.replace(user.data ? '/' : '/profile');
-    }, 1000);
-    return () => {
-      clearTimeout(timer1);
-    };
-  };
-  const handleConfirm = () => {
-    setAuthData({ data: true });
-    setDialogTimeout();
-  };
+  useEffect(() => {
+    const keys = Object.keys(watchedValues);
+    if (keys.length !== 0 && keys.every((k) => !!watchedValues[k]) && !errors) {
+      setValid(true);
+    }
+  }, [watchedValues]);
+
   return (
-    <Grid
-      container
-      direction="column"
-      justify="space-between"
-      alignItems="center"
-      spacing={6}
-    >
-      <Confirmation open={open} setOpen={setOpen} email={email} />
+    <Grid container spacing={3}>
       <Grid item xs={12}>
-        <Typography align="center" variant="h4" component="h2">
+        <Typography align="center" variant="h3" component="h2">
           <Box
             fontWeight="fontWeightMedium"
             {...(matches ? { mt: 2 } : { mt: 1 })}
           >
-            {texts.VERIFY_IDENTITY_TITLE}
+            {texts.CREATE_PROFILE_TITLE}
           </Box>
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography align="center" variant="h6" component="h3">
-          <Box fontWeight="fontWeightMedium">
-            {texts.VERIFY_IDENTITY_SUBTITLE}
-          </Box>
-        </Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <Typography
-          color="textSecondary"
-          align="center"
-          variant="body1"
-          component="h3"
-        >
-          <Box fontWeight="fontWeightMedium">{texts.VERIFY_IDENTITY_TEXT}</Box>
-        </Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <ReactCodeInput fields={6} {...(matches ? {} : { inputStyle })} />
+        <CreateProfileForm
+          noNhsNo={noNhsNo}
+          errors={errors}
+          register={register}
+          handleSubmit={handleSubmit}
+          setValue={setValue}
+          unregister={unregister}
+          handleCreateProfile={handleCreateProfile}
+        />
       </Grid>
       <Grid item xs={12}>
         <Box>
           <Grid
             container
-            direction="column"
+            direction="row"
             justify="space-around"
             alignItems="center"
             spacing={2}
@@ -87,25 +53,13 @@ export default ({ history, matches, email }) => {
             <Grid item>
               <Button
                 width={300}
-                onClick={handleConfirm}
-                variant="contained"
                 color="success"
+                variant="contained"
+                type="submit"
+                form="create-profile"
+                disabled={!valid}
               >
-                {texts.BUTTON_CONTINUE}
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button width={150} color="secondary" onClick={handleResend}>
-                {texts.BUTTON_RESENT_CODE}
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button
-                width={300}
-                color="secondary"
-                onClick={handleResendOnMobile}
-              >
-                {texts.BUTTON_SEND_CODE_INTO_MOBILE}
+                {texts.BUTTON_CONFIRM}
               </Button>
             </Grid>
           </Grid>

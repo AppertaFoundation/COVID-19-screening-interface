@@ -28,7 +28,7 @@ export default ({
           container
           direction="column"
           justify="flex-start"
-          alignItems="flex-start"
+          alignItems="center"
         >
           <Grid item>
             <Box pl={1}>

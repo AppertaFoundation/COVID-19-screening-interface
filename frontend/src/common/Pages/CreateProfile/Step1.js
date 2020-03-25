@@ -62,7 +62,7 @@ export default ({ matches, handleConfirmNhsNo, handleConfirmNoNhsNo }) => {
             <Grid item>
               <Button
                 width={150}
-                onClick={handleConfirmNhsNo}
+                onClick={handleConfirmNoNhsNo}
                 color="secondary"
               >
                 {texts.CREATE_PROFILE_NO_NHS_BUTTON}
@@ -74,7 +74,7 @@ export default ({ matches, handleConfirmNhsNo, handleConfirmNoNhsNo }) => {
                 color="success"
                 variant="contained"
                 disabled={nhsNo.length !== 11}
-                onClick={handleConfirmNoNhsNo}
+                onClick={handleConfirmNhsNo}
               >
                 {texts.BUTTON_CONFIRM}
               </Button>

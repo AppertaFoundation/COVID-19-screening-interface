@@ -5,18 +5,19 @@ import { useTheme } from '@material-ui/core/styles';
 import uniqid from 'uniqid';
 
 import texts from '../../../resources/texts';
-import DitoLogo from '../../../resources/img/dito.png';
 import Button from '../../Components/Button';
 
 const ListItemText = ({ value, desc }) => (
-  <Typography variant="body2" component="div">
-    <Box component="div" display="inline" fontWeight="fontWeightBold">
-      {value}
-    </Box>
-    <Box component="div" display="inline" fontWeight="fontWeightRegular">
-      {desc}
-    </Box>
-  </Typography>
+  <Box m={0.5}>
+    <Typography variant="body2" component="div">
+      <Box component="div" display="inline" fontWeight="fontWeightBold">
+        {value}
+      </Box>
+      <Box component="div" display="inline" fontWeight="fontWeightRegular">
+        {desc}
+      </Box>
+    </Typography>
+  </Box>
 );
 export default ({ history }) => {
   const theme = useTheme();
@@ -31,31 +32,26 @@ export default ({ history }) => {
       justify="space-around"
       alignItems="center"
       style={{ height: '100%' }}
-      spacing={4}
     >
       <Grid item xs={12}>
-        <Box mt={4}>
-          <img
-            {...(matches ? { width: 150 } : { width: 100 })}
-            src={DitoLogo}
-            alt="logo"
-          />
-        </Box>
-      </Grid>
-
-      <Grid item xs={12}>
         <Box {...(matches ? { mt: 6 } : {})} color="warning.main">
-          <Typography align="center" variant="h5" component="h2">
-            {texts.EMERGENCY_CHECK_TITLE}{' '}
+          <Typography align="center" variant="h6" component="h2">
+            <Box fontWeight="fontWeightBold">
+              {texts.EMERGENCY_CHECK_TITLE}{' '}
+            </Box>
           </Typography>
         </Box>
-        <Typography align="center" variant="h6" component="h3">
-          <Box fontWeight="fontWeightMedium" {...(matches ? { mt: 4 } : {})}>
-            {texts.EMERGENCY_CHECK_SUBTITLE}
-          </Box>
-        </Typography>
+      </Grid>
+      <Grid item>
+        <Box {...(matches ? { mt: 6 } : { mt: 1 })}>
 
-        <Box {...(matches ? { pr: 8, pl: 8 } : {})}>
+          <Typography align="center" variant="h6" component="h3">
+            <Box fontWeight="fontWeightMedium" {...(matches ? { mt: 4 } : {})}>
+              {texts.EMERGENCY_CHECK_SUBTITLE}
+            </Box>
+          </Typography>
+        </Box>
+        <Box {...(matches ? { pr: 8, pl: 8, mt: 6 } : {})}>
           <ul style={{ paddingInlineStart: 15 }}>
             {texts.EMERGENCY_CASES.map(item => (
               <li key={uniqid()}>
@@ -67,7 +63,7 @@ export default ({ history }) => {
       </Grid>
 
       <Grid item xs={12}>
-        <Box {...(matches ? { mt: 8 } : {})}>
+        <Box {...(matches ? { mt: 8 } : { mt: 1 })}>
           <Grid
             container
             direction="column"
@@ -86,13 +82,13 @@ export default ({ history }) => {
               </Button>
             </Grid>
             <Grid item>
-              <Button width={300} type="secondary" onClick={handleCancel}>
+              <Button width={300} color="secondary" onClick={handleCancel}>
                 {texts.BUTTON_CANCEL}
               </Button>
             </Grid>
           </Grid>
         </Box>
       </Grid>
-    </Grid>
+    </Grid >
   );
 };

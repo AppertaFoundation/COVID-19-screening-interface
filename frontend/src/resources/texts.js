@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 // Global
 const BUTTON_CANCEL = 'Cancel';
 const BUTTON_CONFIRM = 'Confirm';
@@ -7,6 +7,8 @@ const BUTTON_CREATE_ACCOUNT = ' CREATE ACCOUNT';
 const BUTTON_SING_IN = 'SIGN IN';
 const BUTTON_CONTINUE = 'Continue';
 const BUTTON_CONTINUE2 = 'No, Continue';
+const BUTTON_YES = ' Yes';
+const BUTTON_NO = 'No';
 
 // Login/ create account
 const INTRO_TEXT = ' Welcome to ....., your digital health provider';
@@ -50,13 +52,13 @@ const EMERGENCY_CASES = [
 ];
 
 const TERMS_INTRO =
-  'To provide the best experience and advice, we need you to provide a few details. This should take around 10 minutes.';
+  'To provide the best experience and advice, we need you to provide a few details.';
+const TERMS_INTRO2 = 'This should take around 10 minutes.';
 
-const TERMS_TEXT = ({ terms, conditions }) => (
+const TERMS_TEXT = ({ terms, privacyPolicy, disclaimer }) => (
   <>
-    By using this application, you agree to our
-    <Link to={terms}> Terms & Conditions </Link> and{' '}
-    <Link to={conditions}>Privacy Policy</Link>, and that you areat least 16
+    By using this application, you agree to
+    our {terms}, {disclaimer} and {privacyPolicy}, and that you areat least 16
     years of age and using the aplication for yourself only.
   </>
 );
@@ -65,6 +67,7 @@ const CREATE_PROFILE_TITLE = 'Create Profile';
 const CREATE_PROFILE_NO_NHS_BUTTON = 'I don’t know it';
 const CREATE_PROFILE_SUBTITLE_NHS_NO = 'Enter your NHS number';
 const CREATE_PROFILE_SUBTITLE = 'General Information';
+const CREATE_PROFILE_SUBTITLE_POSTCODE = 'Enter where you live';
 const VERIFY_IDENTITY_TITLE = 'Verify Your Identity';
 const VERIFY_IDENTITY_SUBTITLE = 'We’ve emailed you a verification code';
 const VERIFY_IDENTITY_TEXT =
@@ -76,9 +79,9 @@ const TERMS_NHS_NO_INFO =
 const REGISTRATION_COMPLETE = 'Registration complete';
 
 // Profile
-const PROFILE_TERMS_TITLE = 'Congratulaitons on your registration....';
-const PROFILE_TERMS_SUBTITLE =
-  'General blurb about need for profile information and consent';
+const PROFILE_TERMS_TITLE = 'Health Information Consent';
+const PROFILE_TERMS_INTRO =
+  'Blurb about providing consent about different types of information that will be collected.';
 
 // questions
 const RADIO_OPTIONS = [
@@ -91,26 +94,26 @@ const RADIO_OPTIONS = [
     name: 'No'
   }
 ];
-const PROFILE_TERMS_RADIO = [
+const PROFILE_TERMS_SWITCH = [
   {
     name: 'provideA',
-    choices: RADIO_OPTIONS,
-    label: 'Do you provide consent for A?'
+    label: 'Variable A'
   },
   {
     name: 'provideB',
-    choices: RADIO_OPTIONS,
-    label: 'Do you provide consent for B?'
+    label: 'Variable B'
   },
   {
     name: 'provideC',
-    choices: RADIO_OPTIONS,
-    label: 'Do you provide consent for C?'
+    label: 'Variable C'
   },
   {
     name: 'provideD',
-    choices: RADIO_OPTIONS,
-    label: 'Do you provide consent for D?'
+    label: 'Variable D'
+  },
+  {
+    name: 'provideE',
+    label: 'Variable E'
   }
 ];
 
@@ -286,8 +289,8 @@ export default {
   BUTTON_CONTINUE,
   REGISTRATION_COMPLETE,
   PROFILE_TERMS_TITLE,
-  PROFILE_TERMS_SUBTITLE,
-  PROFILE_TERMS_RADIO,
+  PROFILE_TERMS_INTRO,
+  PROFILE_TERMS_SWITCH,
   PROFILE_HEART_TITLE,
   PROFILE_HEART_SUBTITLE,
   PROFILE_HEART_RADIO,
@@ -307,5 +310,9 @@ export default {
   PROFILE_DISABILITY_TITLE,
   PROFILE_DISABILITY_RADIO,
   PROFILE_COMPLITE,
-  BUTTON_ADD_FAMILY
+  TERMS_INTRO2,
+  BUTTON_ADD_FAMILY,
+  CREATE_PROFILE_SUBTITLE_POSTCODE,
+  BUTTON_YES,
+  BUTTON_NO
 };

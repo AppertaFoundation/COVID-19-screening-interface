@@ -23,11 +23,12 @@ export default () => (
     <Switch>
       <OpenRoute theme={theme.login} path="/intro" component={Intro} />
       <OpenRoute
+        appBar
         theme={theme.main}
         path="/check-emergency"
         component={CheckEmergency}
       />
-      <OpenRoute theme={theme.main} path="/terms" component={Terms} />
+      <OpenRoute appBar theme={theme.main} path="/terms" component={Terms} />
       <OpenRoute
         theme={theme.main}
         path="/create-profile"

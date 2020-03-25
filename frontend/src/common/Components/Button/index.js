@@ -3,10 +3,11 @@ import { withStyles } from '@material-ui/styles';
 import MuiButton from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 
-const ButtonSuccess = withStyles(theme => ({
+const ButtonSuccess = withStyles(() => ({
   contained: {
     minWidth: '100%',
-    backgroundColor: theme.palette.success.dark,
+    backgroundColor: '#397F3A',
+    textTransform: 'none',
     color: '#fff'
   }
 }))(MuiButton);
@@ -18,13 +19,15 @@ const ButtonSecondary = withStyles(theme => ({
     color: '#000'
   },
   root: {
-    minWidth: '100%'
+    minWidth: '100%',
+    textTransform: 'none',
   }
 }))(MuiButton);
 
 const ButtonPrimmary = withStyles(() => ({
   contained: {
     minWidth: '100%',
+    textTransform: 'none',
     backgroundColor: '#fff',
     color: '#000'
   }

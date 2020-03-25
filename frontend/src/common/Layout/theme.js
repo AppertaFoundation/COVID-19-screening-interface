@@ -14,6 +14,11 @@ const main = responsiveFontSizes(
         color: 'grey'
       }
     },
+    palette: {
+      background: {
+        default: '#0000'
+      }
+    },
     overrides: {
       MuiInputBase: { root: { backgroundColor: 'transparent' } },
       MuiOutlinedInput: { root: { borderRadius: 8 } },
