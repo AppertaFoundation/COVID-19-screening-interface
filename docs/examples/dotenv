@@ -3,6 +3,8 @@ DJANGO_POSTGRES_PASSWORD=django
 DJANGO_POSTGRES_DB=django
 # Make sure you use a different secret key in production
 C19_BACKEND_SECRET_KEY="t8z$5)6b-4y_liyeo@rh=e=z=0loz!(_6lhaw9(as+k&3!f=x0"
+# Pipe(|)-separated list of URLs to whitelist for CORS origin
+C19_BACKEND_CORS_ORIGIN_WHITELIST=http://localhost:8000
 
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
@@ -17,3 +19,13 @@ SYSTEM_NAME=local.ehrbase.org
 
 C19_BACKEND_PORT=8000
 EHRBASE_PORT=8001
+
+OIDC_RP_CLIENT_ID=1
+OIDC_RP_CLIENT_SECRET=bd01adf93cfb
+OIDC_RP_SIGN_ALGO=HS256
+OIDC_RP_IDP_SIGN_KEY=None
+OIDC_OP_AUTHORIZATION_ENDPOINT=http://testprovider:8080/openid/authorize
+OIDC_OP_TOKEN_ENDPOINT=http://testprovider:8080/openid/token
+OIDC_OP_USER_ENDPOINT=http://testprovider:8080/openid/userinfo
+
+TESTPROVIDER_PORT=8080
