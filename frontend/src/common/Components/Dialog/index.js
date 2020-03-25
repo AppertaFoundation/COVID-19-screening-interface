@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
-import { Dialog, Box, Slide, Typography } from '@material-ui/core';
+import { Dialog, Slide, Grid, Typography } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
@@ -24,13 +24,13 @@ const styles = theme => ({
   }
 });
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+export const Transition = React.forwardRef(function Transition(props, ref) {
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const DialogTitle = withStyles(styles)(props => {
-  const { children, classes, onClose, ...other } = props;
+  const { title, classes, onClose, align, handleClose, handleSave, ...other } = props;
   return (
     <MuiDialogTitle
       disableTypography
@@ -38,9 +38,30 @@ const DialogTitle = withStyles(styles)(props => {
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...other}
     >
-      <Box mr={2} ml={2}>
-        <Typography variant="h5">{children}</Typography>
-      </Box>
+      <Grid
+        container
+        direction='row'
+        alignItems='center'
+        alignContent='center'
+        spacing={2}
+
+      >
+        <Grid item>
+          {handleClose && (
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close"
+            >
+              <CloseIcon />
+            </IconButton>)}
+        </Grid>
+        <Grid item>
+          <Typography align="center" variant="h5">{title}</Typography>
+        </Grid>
+      </Grid>
+
     </MuiDialogTitle>
   );
 });
@@ -52,29 +73,17 @@ const DialogContent = withStyles(theme => ({
   }
 }))(MuiDialogContent);
 
-export default ({ title, children, open, openAction, handleClose }) => {
+export default ({ title, children, open, openAction, fullScreen, handleClose, alignTitle }) => {
   return (
     <>
       {openAction}
       <Dialog
-        fullScreen
+        fullScreen={fullScreen}
         open={open}
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <DialogTitle onClose={() => handleClose()}>
-          {handleClose && (
-            <IconButton
-              edge="start"
-              color="inherit"
-              onClick={handleClose}
-              aria-label="close"
-            >
-              <CloseIcon />
-            </IconButton>
-          )}
-          {title}
-        </DialogTitle>
+        {title && <DialogTitle title={title} onClose={() => handleClose()} handleClose={handleClose} align={alignTitle} />}
         <DialogContent>{children}</DialogContent>
       </Dialog>
     </>

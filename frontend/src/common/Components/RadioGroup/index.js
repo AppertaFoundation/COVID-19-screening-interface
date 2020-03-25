@@ -9,7 +9,7 @@ import {
   Grid
 } from '@material-ui/core';
 import { Controller } from 'react-hook-form';
-import ErrorMsg from '../ErrorMsg';
+import ErrorMessage from '../ErrorMsg';
 
 const RadioItem = ({ value, label, size = 'small' }) => (
   <FormControlLabel
@@ -26,7 +26,8 @@ export default ({
   size,
   defaultValue,
   control,
-  errors
+  errors,
+  required = 'This is required field'
 }) => {
   const [selection, setSelection] = useState({
     value: ''
@@ -56,15 +57,13 @@ export default ({
                     </Box>
                   ))}
               </Grid>
-              <ErrorMsg>
-                {errors && errors[`${name}`] && 'This field is required'}
-              </ErrorMsg>
+              <ErrorMessage name={name} errors={errors} />
             </RadioGroup>
           </FormControl>
         </Box>
       }
       control={control}
-      rules={{ required: true }}
+      rules={{ required }}
       name={name}
       defaultValue={defaultValue}
     />

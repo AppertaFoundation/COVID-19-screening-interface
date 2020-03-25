@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
 import { TextField, InputAdornment, Grid, Box } from '@material-ui/core';
+import Picker from 'react-mobile-picker-scroll';
 import Dialog from '../Dialog';
 import Button from '../Button';
 import ErrorMsg from '../ErrorMsg';
-import Picker from 'react-mobile-picker-scroll';
 
 export default ({
-  label = 'Temperature',
-  placeholder = 'Temperature',
-  required = true,
+  label,
+  placeholder,
+  valueGroupsProps,
+  optionGroups,
+  required,
   register,
-  errors,
+  seperator,
   name
 }) => {
   const [open, setOpen] = useState(false);
-  const [valueGroups, setValueGroup] = useState({
-    firstColumn: '36',
-    pointer: '.',
-    secondColumn: '6'
-  });
+  const [valueGroups, setValueGroup] = useState(valueGroupsProps);
+
   const [inputValue, setInputValue] = useState(null);
 
   const handleClose = () => setOpen(false);
@@ -26,23 +25,24 @@ export default ({
     event.preventDefault();
     setOpen(true);
   };
-  const handleChange = (name, value) => {
-    {
-      setValueGroup({ ...valueGroups, [name]: value });
-      setInputValue({ ...valueGroups, [name]: value });
-    }
+  const handleChange = (key, value) => {
+    setValueGroup({ ...valueGroups, [key]: value });
+    setInputValue({ ...valueGroups, [key]: value });
   };
+
   const handleConfirm = () => {
     setInputValue(valueGroups);
     setOpen(false);
   };
   const getValue = () =>
     inputValue
-      ? inputValue.firstColumn + inputValue.pointer + inputValue.secondColumn
+      ? `${inputValue.firstColumn}${seperator ? inputValue.seperator : ''}${
+          inputValue.secondColumn ? inputValue.secondColumn : ''
+        }`
       : '';
   return (
     <Dialog
-      title="Add Temperature"
+      title={label}
       open={open}
       handleClose={handleClose}
       handleOpen={handleConfirm}
@@ -69,11 +69,6 @@ export default ({
               )
             }}
           />
-          <ErrorMsg>
-            {errors &&
-              errors.body_temperature_degrees_C &&
-              'This field is required'}
-          </ErrorMsg>
         </>
       }
     >
@@ -87,11 +82,7 @@ export default ({
         <Grid item>
           <Box width={200}>
             <Picker
-              optionGroups={{
-                firstColumn: ['35', '36', '37', '38', '39', '40', '41'],
-                pointer: ['.'],
-                secondColumn: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-              }}
+              optionGroups={optionGroups}
               valueGroups={valueGroups}
               onChange={(name, value) => handleChange(name, value)}
             />
@@ -99,7 +90,7 @@ export default ({
         </Grid>
         <Grid item>
           <Button type="button" onClick={handleConfirm}>
-            Confirm Temperature
+            Confirm
           </Button>
         </Grid>
       </Grid>
