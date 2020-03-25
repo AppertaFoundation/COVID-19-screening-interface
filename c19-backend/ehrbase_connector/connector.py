@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
+import logging
 import os
+import pprint
 import requests
 import requests.exceptions
+from typing import Mapping
 
 import attr
+
+
+logger = logging.getLogger(__name__)
 
 
 def connect(*, base_url) -> 'OpenEHRConnector':
@@ -53,6 +59,7 @@ class OpenEHRAPI(object):
                 "is_queryable": "true",
             },
         )
+        # TODO see if we can use the ETag header from POST rather than doing a separate GET
         if creation_response.status_code == requests.codes.ok \
            or ehr_already_existed(status_code=creation_response.status_code)\
         :
@@ -77,6 +84,37 @@ class OpenEHRAPI(object):
             raise APIException(
                 "HTTP status {status} during POST /ehrbase/rest/openehr/v1/ehr"
             )
+
+    def insert_composition_into_ehr(
+            self, *, ehr_id: str, composition: Mapping) -> dict:
+        post_path = ehr_compositions_path(ehr_id)
+        response = self.connection.post(post_path, json=composition)
+        if response.status_code == requests.codes.no_content: # EHR's way of saying created successfully
+            return {
+                'composition_uid': response.headers['ETag'].strip('"'),
+            }
+        else:
+            logger.error(
+                f"======================\n"
+                f"HTTP status {response.status_code}\n\n"
+                f"Headers: {pprint.pprint(response.headers)}\n\n"
+                f"Body: {response.text!r}\n\n"
+                f"======================\n"
+            )
+            raise APIException(api_error_message(
+                status_code=response.status_code, method='POST', path=post_path))
+
+
+def ehr_path(ehr_id):
+    return f'/ehrbase/rest/openehr/v1/ehr/{ehr_id}'
+
+
+def ehr_compositions_path(ehr_id):
+    return f'{ehr_path(ehr_id)}/composition'
+
+
+def api_error_message(method, status_code, path):
+    return f"HTTP status {status_code} during {method} {path}"
 
 
 class APIException(Exception):

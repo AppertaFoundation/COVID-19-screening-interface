@@ -13,36 +13,55 @@ from toolz import dicttoolz
 def covid_archetype_structure(
         clinical_author_name: str,
         clinical_author_id: str,
-        document_date: datetime.date,
+        document_time: datetime.datetime,
         form_values: Mapping,
 ) -> dict:
-    return dict(
-        clinicalAuthorName=clinical_author_name,
-        clinicalAuthorId=clinical_author_id,
-        documentTime=document_date.strftime('%Y-%m-%d'),
-        bodyTemp=dict(
-            magnitude=form_values['body_temperature_degrees_C'],
-            units='Cel',
-        ),
-        symptoms=dicttoolz.merge(
-            {
-                'dateOfOnset': form_values['date_of_onset'].strftime('%Y-%m-%d')
-            },
-            archetype_values_from_presence_field(
-                prefix='firstSymptomsPresence',
-                presence=form_values['first_symptoms_presence']),
-            archetype_values_from_presence_field(
-                prefix='coughPresence', presence=form_values['cough_presence']),
-            archetype_values_from_presence_field(
-                prefix='feverPresence', presence=form_values['fever_presence']),
-            archetype_values_from_presence_field(
-                prefix='difficultyBreathingPresence',
-                presence=form_values['difficulty_breathing_presence']),
-            archetype_values_from_presence_field(
-                prefix='soreThroatPresence',
-                presence=form_values['sore_throat_presence']),
-        ),
-    )
+    """
+    :param clinical_author_name: Name of the clinician
+    :param clinical_author_id: The clinician's id
+    :param document_time: Full datetime that document was created
+    :param form_values: {
+            'date_of_onset': datetime but with time portion 00:00:00,
+            'first_symptoms_presence': 'present'|'absent'|'unknown',
+            'cough_presence': 'present'|'absent'|'unknown',
+            'fever_presence': 'present'|'absent'|'unknown',
+            'difficulty_breathing_presence': 'present'|'absent'|'unknown',
+            'sore_throat_presence': 'present'|'absent'|'unknown',
+            'body_temperature_degrees_C': float,
+        }
+    :return: simple dict that can be later expanded to canonical composition format
+    """
+    onset_date = form_values['date_of_onset']
+    if onset_date.time() != datetime.time(0, 0, 0):
+        raise ValueError('date_of_onset must be at time 00:00:00')
+    else:
+        return dict(
+            clinicalAuthorName=clinical_author_name,
+            clinicalAuthorId=clinical_author_id,
+            documentTime=document_time.isoformat(),
+            bodyTemp=dict(
+                magnitude=form_values['body_temperature_degrees_C'],
+                units='Cel',
+            ),
+            symptoms=dicttoolz.merge(
+                {
+                    'dateOfOnset': form_values['date_of_onset'].isoformat(),
+                },
+                archetype_values_from_presence_field(
+                    prefix='firstSymptomsPresence',
+                    presence=form_values['first_symptoms_presence']),
+                archetype_values_from_presence_field(
+                    prefix='coughPresence', presence=form_values['cough_presence']),
+                archetype_values_from_presence_field(
+                    prefix='feverPresence', presence=form_values['fever_presence']),
+                archetype_values_from_presence_field(
+                    prefix='difficultyBreathingPresence',
+                    presence=form_values['difficulty_breathing_presence']),
+                archetype_values_from_presence_field(
+                    prefix='soreThroatPresence',
+                    presence=form_values['sore_throat_presence']),
+            ),
+        )
 
 
 def archetype_values_from_presence_field(prefix: str, presence: str) -> dict:

@@ -1,6 +1,8 @@
 import datetime
 import unittest
 
+import pytz
+
 from . import covid_converters as CC
 
 
@@ -36,7 +38,8 @@ class The_covid_archetype_values(unittest.TestCase):
         self.covid_archetype_values = CC.covid_archetype_structure(
             clinical_author_name='Dr Fred Bloggs',
             clinical_author_id='134-4567',
-            document_date=datetime.date(2020, 3, 11),
+            document_time=datetime.datetime(
+                2020, 3, 11, 12, 00, 33, tzinfo=pytz.timezone('UTC')),
             form_values=dict(
                 first_symptoms_presence='present',
                 cough_presence='unknown',
@@ -44,7 +47,8 @@ class The_covid_archetype_values(unittest.TestCase):
                 difficulty_breathing_presence='present',
                 sore_throat_presence='present',
                 body_temperature_degrees_C=38.4,
-                date_of_onset=datetime.date(2020, 3, 10)
+                date_of_onset=datetime.datetime(
+                    2020, 3, 10, 0, 0, 0, tzinfo=pytz.timezone('UTC'))
             ),
         )
 
@@ -52,11 +56,11 @@ class The_covid_archetype_values(unittest.TestCase):
         expected = {
             'clinicalAuthorName': "Dr Fred Bloggs",
             'clinicalAuthorId': "134-4567",
-            'documentTime': "2020-03-11",
+            'documentTime': "2020-03-11T12:00:33+00:00",
             'symptoms': {
                 'firstSymptomsPresenceCode': "at0.2",
                 'firstSymptomsPresenceText': "Present",
-                'dateOfOnset': "2020-03-10",
+                'dateOfOnset': "2020-03-10T00:00:00+00:00",
 
                 'coughPresenceCode': "at0.4",
                 'coughPresenceText': "Unknown",
@@ -73,5 +77,4 @@ class The_covid_archetype_values(unittest.TestCase):
                 'units': "Cel"
             },
         }
-
         self.assertDictEqual(self.covid_archetype_values, expected)

@@ -150,6 +150,30 @@ Cause: starting before setting up
 
 Solution: run '```yarn```' before '```yarn start```'
 
+
+## Installing the covid archetypes into ehrbase
+
+Once you have ehrbase up and running...
+
+It's actually the template you upload, and that's a `.opt` file
+
+```bash
+curl \
+    -v --location \
+    --request POST \
+    'http://localhost:8001/ehrbase/rest/openehr/v1/definition/template/adl1.4' \
+    --header 'Accept: application/json' \
+    --header 'Content-Type: application/xml' \
+    --header 'PREFER: representation=minimal'
+    --data-binary '@openehr/tech/opt/openEHR-Suspected Covid-19 assessment.v0.opt'
+```
+
+If you're unsure whether it has gone successfully (the POST handler doesn't return you anything),
+try again and it should give you a 409 Conflict error if it uploaded successfully last time.
+Unless, that is, you have the setting enabled (which we'll document here in due course) to allow
+templates to be overwritten.
+
+
 ## Data protection and information governance
 
 The application can operate within the existing IT estate of the customer therefore no data is stored outside the existing information governance scope through a standard installation.
