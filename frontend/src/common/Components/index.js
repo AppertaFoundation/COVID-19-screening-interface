@@ -1,8 +1,8 @@
-import OtherSymptomps from './OtherSymptomps';
+// import OtherSymptomps from './OtherSymptomps';
 import Button from './Button';
-import IdentityCard from './IdentityCard';
+// import IdentityCard from './IdentityCard';
 import RadioGroup from './RadioGroup';
-import Temperature from './Input/Temperature';
+// import Temperature from './Input/Temperature';
 import ErrorMsg from './ErrorMsg';
 import Dialog from './Dialog';
 import DatePicker from './DatePicker';
@@ -10,10 +10,10 @@ import DatePicker from './DatePicker';
 export {
   Button,
   ErrorMsg,
-  IdentityCard,
-  Temperature,
+  // IdentityCard,
+  // Temperature,
   RadioGroup,
-  OtherSymptomps,
+  // OtherSymptomps,
   Dialog,
   DatePicker
 };

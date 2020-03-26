@@ -36,7 +36,7 @@ export default () => (
         path="/create-profile"
         component={CreateProfile}
       />
-      <PrivateRoute exact theme={theme.main} path="/" component={Dashboard} />
+      <PrivateRoute exact theme={theme.main} appBar bottomToolbar path="/" component={Dashboard} />
       <PrivateRoute
         exact
         theme={theme.main}

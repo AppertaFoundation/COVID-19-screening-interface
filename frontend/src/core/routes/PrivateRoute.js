@@ -3,8 +3,9 @@ import { Route, Redirect } from 'react-router-dom';
 
 import { AuthContext } from '../context/AuthContext';
 import Layout from '../../common/Layout';
+import AppBarDashboard from '../../common/Layout/AppBarDashboard';
 
-export default ({ component: Component, theme, ...rest }) => {
+export default ({ component: Component, theme, appBar, bottomToolbar, ...rest }) => {
   const { auth } = useContext(AuthContext);
   const { loading } = auth;
 
@@ -24,7 +25,7 @@ export default ({ component: Component, theme, ...rest }) => {
       render={routeProps =>
         auth.data
           ? (
-            <Layout theme={theme}>
+            <Layout theme={theme} bottomToolbar={bottomToolbar} {...(appBar ? { appBar: <AppBarDashboard /> } : {})}>
               <Component {...routeProps} />
             </Layout>
           ) : (
