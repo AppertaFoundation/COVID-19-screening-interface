@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Typography, Grid, Box, Link } from '@material-ui/core';
+import { Typography, Grid, Box } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
 

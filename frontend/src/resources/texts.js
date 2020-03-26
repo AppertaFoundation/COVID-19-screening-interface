@@ -12,6 +12,7 @@ const BUTTON_NO = 'No';
 
 // Login/ create account
 const INTRO_TEXT = ' Welcome to ....., your digital health provider';
+const SING_IN_TEXT = 'Enter your credentials';
 const ACCEPT_TERMS = 'Agree & Continue';
 const EMERGENCY_CHECK_TITLE = 'Check it’s not an emergency';
 const EMERGENCY_CHECK_SUBTITLE = 'Call 999 now if you have:';
@@ -134,7 +135,12 @@ const PROFILE_HEART_RADIO = [
     label: 'Have you ever had a heart attack?'
   },
   {
-    name: 'sufferedStroke',
+    name: 'hadSufferedStroke',
+    choices: RADIO_OPTIONS,
+    label: 'Have you ever suffered a stroke?'
+  },
+  {
+    name: 'hadIrregularHeartBeat',
     choices: RADIO_OPTIONS,
     label: 'Do you have an irregular heart beat?'
   },
@@ -263,6 +269,7 @@ const PROFILE_DISABILITY_RADIO = {
 };
 const PROFILE_COMPLITE = 'Profile complete';
 const BUTTON_ADD_FAMILY = 'Add Family Member';
+const BUTTON_ADD_PROBLEM = 'Add new problem';
 export default {
   EMERGENCY_CASES,
   EMERGENCY_CHECK_SUBTITLE,
@@ -314,5 +321,7 @@ export default {
   BUTTON_ADD_FAMILY,
   CREATE_PROFILE_SUBTITLE_POSTCODE,
   BUTTON_YES,
-  BUTTON_NO
+  BUTTON_NO,
+  BUTTON_ADD_PROBLEM,
+  SING_IN_TEXT
 };

@@ -11,6 +11,7 @@ import {
 import { Controller } from 'react-hook-form';
 import ErrorMessage from '../ErrorMsg';
 
+
 const RadioItem = ({ value, label, size = 'small' }) => (
   <FormControlLabel
     value={value}
@@ -20,52 +21,58 @@ const RadioItem = ({ value, label, size = 'small' }) => (
 );
 
 export default ({
-  choices,
-  label,
-  name,
+  options,
   size,
   defaultValue,
   control,
   errors,
   required = 'This is required field'
 }) => {
-  const [selection, setSelection] = useState({
-    value: ''
-  });
-  const handleChange = value => {
-    setSelection(value);
+
+  const defaultCheked = {};
+  options.map(item => Object.assign(defaultCheked, { [item.name]: '' }));
+  const [selection, setSelection] = useState(defaultCheked);
+  const handleChange = event => {
+    setSelection({ ...selection, [event.target.name]: event.target.value });
   };
+
   return (
-    <Controller
-      as={
-        <Box p={1} m={1}>
-          <FormControl component="fieldset">
-            <FormLabel component="legend">{label}</FormLabel>
-            <RadioGroup
-              value={selection}
-              onChange={event => handleChange(event.target.value)}
-            >
-              <Grid container direction="row">
-                {choices &&
-                  choices.map(item => (
-                    <Box mr={6}>
-                      <RadioItem
-                        size={size}
-                        value={item.id}
-                        label={item.name}
-                      />
-                    </Box>
-                  ))}
-              </Grid>
-              <ErrorMessage name={name} errors={errors} />
-            </RadioGroup>
-          </FormControl>
-        </Box>
-      }
-      control={control}
-      rules={{ required }}
-      name={name}
-      defaultValue={defaultValue}
-    />
+    options.map(question => {
+      const { name, choices, label } = question;
+      return (
+        < Controller
+          as={
+            < Box p={1} m={1} >
+              <FormControl component="fieldset">
+                <FormLabel component="legend">{label}</FormLabel>
+                <RadioGroup
+                  value={selection[name]}
+                  onChange={event => handleChange(event)}
+                  name={name}
+                >
+                  <Grid container direction="row">
+                    {choices &&
+                      choices.map(item => (
+                        <Box mr={6}>
+                          <RadioItem
+                            size={size}
+                            value={item.id}
+                            label={item.name}
+                          />
+                        </Box>
+                      ))}
+                  </Grid>
+                  <ErrorMessage name={name} errors={errors} />
+                </RadioGroup>
+              </FormControl>
+            </Box>
+          }
+          control={control}
+          rules={{ required }}
+          name={name}
+          defaultValue={defaultValue}
+        />
+      );
+    })
   );
 };

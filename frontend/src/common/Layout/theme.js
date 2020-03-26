@@ -17,6 +17,10 @@ const main = responsiveFontSizes(
     palette: {
       background: {
         default: '#0000'
+      },
+      secondary: {
+        main: '#4B6171',
+        contrastText: '#fff'
       }
     },
     overrides: {
@@ -57,12 +61,7 @@ const main = responsiveFontSizes(
         }
       }
     },
-    secondary: {
-      light: '#fff',
-      main: '#fff',
-      // dark: will be calculated from palette.secondary.main,
-      contrastText: '#000'
-    }
+
   })
 );
 

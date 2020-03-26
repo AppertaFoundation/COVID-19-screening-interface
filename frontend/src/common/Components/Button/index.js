@@ -1,5 +1,6 @@
 import React from 'react';
-import { withStyles } from '@material-ui/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme, withStyles } from '@material-ui/core/styles';
 import MuiButton from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 
@@ -15,8 +16,8 @@ const ButtonSuccess = withStyles(() => ({
 const ButtonSecondary = withStyles(theme => ({
   contained: {
     minWidth: '100%',
-    backgroundColor: theme.palette.secondary,
-    color: '#000'
+    backgroundColor: theme.palette.secondary.main,
+    color: '#fff'
   },
   root: {
     minWidth: '100%',
@@ -33,15 +34,19 @@ const ButtonPrimmary = withStyles(() => ({
   }
 }))(MuiButton);
 
-export default ({ children, color, width, ...rest }) => (
-  <Box width={width}>
-    {
+export default ({ children, color, width, ...rest }) => {
+  const theme = useTheme();
+  const xs = useMediaQuery(theme.breakpoints.only('xs'));
+  return (
+    <Box width={width}>
       {
-        // eslint-disable-next-line react/jsx-props-no-spreading
-        success: <ButtonSuccess {...rest}>{children}</ButtonSuccess>,
-        secondary: <ButtonSecondary {...rest}>{children}</ButtonSecondary>,
-        primmary: <ButtonPrimmary {...rest}>{children}</ButtonPrimmary>
-      }[color]
-    }
-  </Box>
-);
+        {
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          success: <ButtonSuccess {...(xs ? { size: 'small' } : {})} {...rest}>{children}</ButtonSuccess>,
+          secondary: <ButtonSecondary {...(xs ? { size: 'small' } : {})}  {...rest}>{children}</ButtonSecondary>,
+          primmary: <ButtonPrimmary {...(xs ? { size: 'small' } : {})}{...rest}>{children}</ButtonPrimmary>
+        }[color]
+      }
+    </Box>
+  );
+};

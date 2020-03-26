@@ -13,7 +13,7 @@ export default ({ matches, handleCreateProfile }) => {
 
   useEffect(() => {
     const keys = Object.keys(watchedValues);
-    if (keys.length !== 0 && keys.every((k) => !!watchedValues[k]) && !errors) {
+    if (keys.length !== 0 && keys.every((k) => !!watchedValues[k])) {
       setValid(true);
     }
   }, [watchedValues]);

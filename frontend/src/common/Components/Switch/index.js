@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { Switch, Box, FormGroup, makeStyles } from '@material-ui/core/';
+import { Switch, FormGroup, makeStyles } from '@material-ui/core/';
 
 
 const useStyle = makeStyles({
