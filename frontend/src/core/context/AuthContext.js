@@ -7,6 +7,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({ data: null });
   const setUserData = data => setUser(data);
   const setAuthData = data => {
+    // [TODO] replace this logic with real jwt request
     setAuth({ data });
   };
   useEffect(() => {

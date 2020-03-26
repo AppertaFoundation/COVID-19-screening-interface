@@ -17,11 +17,13 @@ import ProfileDisability from '../../common/Pages/Profile/ProfileDisability';
 import ProfilePastMedicalHistory from '../../common/Pages/Profile/ProfilePastMedicalHistory';
 import ProfileCognition from '../../common/Pages/Profile/ProfileCognition';
 import ProfileConifrmation from '../../common/Pages/Profile/ProfileConifrmation';
+import SingIn from '../../common/Pages/SingIn';
 
 export default () => (
   <BrowserRouter>
     <Switch>
       <OpenRoute theme={theme.login} path="/intro" component={Intro} />
+      <OpenRoute theme={theme.login} path="/sing-in" component={SingIn} />
       <OpenRoute
         appBar
         theme={theme.main}

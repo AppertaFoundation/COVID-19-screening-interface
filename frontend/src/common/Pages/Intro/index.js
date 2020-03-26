@@ -6,6 +6,7 @@ import Button from '../../Components/Button';
 
 export default ({ history }) => {
   const handleCreateAccount = () => history.replace('/check-emergency');
+  const handleSingIn = () => history.replace('/sing-in');
   return (
     <Grid
       container
@@ -15,9 +16,7 @@ export default ({ history }) => {
       style={{ height: '100vh' }}
     >
       <Grid item>
-        <Box width={200}>
-          <img src={DitoLogo} alt="logo" />
-        </Box>
+        <img width={150} src={DitoLogo} alt="logo" />
       </Grid>
       <Grid item style={{ marginTop: '-150px' }}>
         <Box width={300}>
@@ -42,7 +41,7 @@ export default ({ history }) => {
         >
           <Grid item>
             <Button
-              width={300}
+              width={200}
               color="success"
               variant="contained"
               onClick={handleCreateAccount}
@@ -51,7 +50,7 @@ export default ({ history }) => {
             </Button>
           </Grid>
           <Grid item>
-            <Button width={300} color="secondary" variant="contained">
+            <Button width={200} color="primmary" variant="contained" onClick={handleSingIn}>
               {texts.BUTTON_SING_IN}{' '}
             </Button>
           </Grid>
