@@ -1,18 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Grid, Typography, Box } from '@material-ui/core';
-import uniquid from 'uniqid';
 import RadioGroup from '../../Components/RadioGroup';
 import Button from '../../Components/Button';
 import texts from '../../../resources/texts';
 
 export default ({ history }) => {
-  const { handleSubmit, control, errors } = useForm();
-
+  const { handleSubmit, control, errors, watch } = useForm();
+  const [addButton, setAddButton] = useState(false);
+  const [open, setOpen] = useState(false);
   const onSubmit = data => {
-    console.log(data);
+    // submit action()
     history.replace('/profile/other');
   };
+  const [valid, setValid] = useState(false);
+  const watchedValues = watch();
+
+  useEffect(() => {
+    const keys = Object.keys(watchedValues);
+    if (keys.length !== 0 && keys.every((k) => !!watchedValues[k])) {
+      setValid(true);
+    }
+  }, [watchedValues]);
+
+  useEffect(() => {
+    if (watchedValues.problemsWithHeart === 'yes')
+      return setAddButton(true);
+    return setAddButton(false);
+  }, [watchedValues.problemsWithHeart]);
+  const handleOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
+
   return (
     <>
       <form id="profile-terms" onSubmit={handleSubmit(onSubmit)}>
@@ -43,19 +61,28 @@ export default ({ history }) => {
           </Grid>
           <Grid item xs={12}>
             <Box style={{ width: '100%' }}>
-              {texts.PROFILE_HEART_RADIO.map(question => {
-                const { name, choices, label } = question;
-                return (
-                  <RadioGroup
-                    key={uniquid()}
-                    control={control}
-                    name={name}
-                    choices={choices}
-                    label={label}
-                    errors={errors}
-                  />
-                );
-              })}
+              <RadioGroup
+                control={control}
+                errors={errors}
+                options={texts.PROFILE_HEART_RADIO.slice(0, 1)}
+              />
+              {addButton
+                && (
+                  <Box m={2}>
+                    <Button
+                      color="secondary"
+                      variant="contained"
+                      onClick={handleOpen}
+                      width={200}
+                      size='small'
+                    >{texts.BUTTON_ADD_PROBLEM}</Button>
+                  </Box>
+                )}
+              <RadioGroup
+                control={control}
+                errors={errors}
+                options={texts.PROFILE_HEART_RADIO.slice(1)}
+              />
             </Box>
           </Grid>
           <Grid item width="100%">
@@ -65,6 +92,7 @@ export default ({ history }) => {
                 variant="contained"
                 type="submit"
                 form="profile-terms"
+                disabled={!valid}
                 width={300}
               >
                 {texts.BUTTON_CONTINUE}
