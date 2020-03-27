@@ -120,11 +120,32 @@ sudo apt install yarn
 yarn
 ```
 
-#### Start
+### Prep backend configuration
+copy file config from
+```
+docs/examples/frontend/src/config.js
+```
+past to
+```
+frontend/src/
+```
+and set in this file your backend configuration
 
+### Install dependencies
 ```
 yarn
+```
+
+#### Start with backend auth
+
+```
 yarn start
+```
+
+#### Start without backend auth
+
+```
+REACT_APP_NO_BACKEND=true yarn start
 ```
 
 #### Troubleshooting
