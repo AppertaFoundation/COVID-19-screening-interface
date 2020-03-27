@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API } from '../../config';
+import { API, TOKEN_REFRESH } from '../../config';
 
 const axiosInstance = axios.create({
     baseURL: API,
@@ -22,7 +22,7 @@ axiosInstance.interceptors.response.use(
         if (refreshToken && error.response.status === 401 && error.response.statusText === "Unauthorized") {
 
             return axiosInstance
-                .post('/token/refresh/', { refresh: refreshToken })
+                .post({ TOKEN_REFRESH }, { refresh: refreshToken })
                 .then((response) => {
                     const authData = { accessToken: response.data.access, refreshToken: response.data.refresh };
                     window.localStorage.setItem('authData', JSON.stringify(authData));
