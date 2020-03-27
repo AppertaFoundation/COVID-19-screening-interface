@@ -1,24 +1,51 @@
 import React, { createContext, useState, useEffect } from 'react';
+import useApiRequest from '../hooks/useApiRequest';
 
 export const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState({ loading: true, data: null });
+  const [params, setParams] = useState({});
+  const [{ status, response, loading }, makeRequest] = useApiRequest(
+    '/token/obtain/',
+    {
+      verb: 'post',
+      params
+    }
+  );
+  const [auth, setAuth] = useState({ loading, data: response, status });
   const [user, setUser] = useState({ data: null });
   const setUserData = data => setUser(data);
+
   const setAuthData = data => {
-    // [TODO] replace this logic with real jwt request
-    setAuth({ data });
+    if (process.env.REACT_APP_NO_BACKEND) {
+      setAuth({ data, loading: false });
+    }
+    setParams(data);
   };
+
   useEffect(() => {
-    setAuth({
-      loading: false,
-      data: JSON.parse(window.localStorage.getItem('authData'))
-    });
+    makeRequest();
+  }, [params]);
+
+
+  useEffect(() => {
+    setAuth({ ...auth, loading: true });
   }, []);
+
+
+
   useEffect(() => {
-    window.localStorage.setItem('authData', JSON.stringify(auth.data));
-  }, [auth.data]);
+    if (status === 'useApiRequest/SUCCESS') {
+      const authData = { accessToken: response.data.access, refreshToken: response.data.refresh };
+      setAuth({
+        loading: false,
+        data: authData,
+        status
+      });
+      window.localStorage.setItem('authData', JSON.stringify(authData));
+    }
+  }, [status]);
+
   return (
     <AuthContext.Provider value={{ auth, setAuthData, user, setUserData }}>
       {children}

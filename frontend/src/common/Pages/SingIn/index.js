@@ -11,10 +11,9 @@ export default ({ history }) => {
     const { register, errors, handleSubmit } = useForm();
     const { setAuthData } = useContext(AuthContext);
     const onSubmit = data => {
-        setAuthData(data.username);
+        setAuthData(data);
         history.replace('/');
     };
-
     return (
         <Grid
             container
