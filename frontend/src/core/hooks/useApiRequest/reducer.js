@@ -4,7 +4,7 @@ export const initialState = {
   status: null,
   response: null,
   loading: false,
-  erors: null
+  error: null
 };
 
 const reducer = (state = initialState, { type, response } = {}) => {
@@ -14,7 +14,7 @@ const reducer = (state = initialState, { type, response } = {}) => {
     case SUCCESS:
       return { ...state, status: SUCCESS, response, loading: false };
     case ERROR:
-      return { ...state, status: ERROR, response, loading: false };
+      return { ...state, status: ERROR, error: response, loading: false };
     default:
       return state;
   }

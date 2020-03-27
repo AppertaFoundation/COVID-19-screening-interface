@@ -1,18 +1,19 @@
 import React, { createContext, useState, useEffect } from 'react';
 import useApiRequest from '../hooks/useApiRequest';
+import { TOKEN_OBTAIN } from '../../config';
 
 export const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
   const [params, setParams] = useState({});
-  const [{ status, response, loading }, makeRequest] = useApiRequest(
-    '/token/obtain/',
+  const [{ status, response, loading, error }, makeRequest] = useApiRequest(
+    TOKEN_OBTAIN,
     {
       verb: 'post',
       params
     }
   );
-  const [auth, setAuth] = useState({ loading, data: response, status });
+  const [auth, setAuth] = useState({ loading, data: response, status, error });
   const [user, setUser] = useState({ data: null });
   const setUserData = data => setUser(data);
 
@@ -43,6 +44,13 @@ const AuthProvider = ({ children }) => {
         status
       });
       window.localStorage.setItem('authData', JSON.stringify(authData));
+    }
+    if (status === 'useApiRequest/ERROR') {
+      setAuth({
+        ...auth,
+        loading: false,
+        error: error.response.statusText
+      });
     }
   }, [status]);
 
