@@ -22,7 +22,7 @@ axiosInstance.interceptors.response.use(
         if (refreshToken && error.response.status === 401 && error.response.statusText === "Unauthorized") {
 
             return axiosInstance
-                .post({ TOKEN_REFRESH }, { refresh: refreshToken })
+                .post(TOKEN_REFRESH, { refresh: refreshToken })
                 .then((response) => {
                     const authData = { accessToken: response.data.access, refreshToken: response.data.refresh };
                     window.localStorage.setItem('authData', JSON.stringify(authData));
@@ -36,7 +36,6 @@ axiosInstance.interceptors.response.use(
                     console.log(err);
                 });
         }
-        // specific error handling done elsewhere
         return Promise.reject({ ...error });
     }
 );

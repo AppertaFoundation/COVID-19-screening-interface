@@ -7,15 +7,8 @@ import AppBarDashboard from '../../common/Layout/AppBarDashboard';
 
 export default ({ component: Component, theme, appBar, bottomToolbar, ...rest }) => {
   const { auth } = useContext(AuthContext);
-  const { loading, error } = auth;
-  if (error) {
-    return <Route
-      {...rest}
-      render={() => {
-        return <p>{error}</p>;
-      }}
-    />;
-  }
+  const { loading } = auth;
+
   if (loading) {
     return (
       <Route
@@ -26,6 +19,7 @@ export default ({ component: Component, theme, appBar, bottomToolbar, ...rest })
       />
     );
   }
+
   return (
     <Route
       {...rest}

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Typography, Grid, Box } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import texts from '../../../resources/texts';
@@ -6,14 +6,43 @@ import DitoLogo from '../../../resources/img/dito.png';
 import Button from '../../Components/Button';
 import Input from '../../Components/Input/Input';
 import { AuthContext } from '../../../core/context/AuthContext';
+import { TOKEN_OBTAIN } from '../../../config';
+import useApiRequest from '../../../core/hooks/useApiRequest';
+
 
 export default ({ history }) => {
-    const { register, errors, handleSubmit } = useForm();
+    const { register, errors, setError, clearError, handleSubmit } = useForm();
+    const [{ response, error }, makeRequest] = useApiRequest(
+        TOKEN_OBTAIN,
+        {
+            verb: 'post'
+        }
+    );
     const { setAuthData } = useContext(AuthContext);
     const onSubmit = data => {
-        setAuthData(data);
-        history.replace('/');
+        if (process.env.REACT_APP_NO_BACKEND) {
+            setAuthData(data);
+            return history.replace('/');
+
+        }
+        return makeRequest(data);
     };
+    useEffect(() => {
+        if (response && response.status) {
+            const authData = response && response.status ?
+                { accessToken: response.data.access, refreshToken: response.data.refresh } : null;
+            setAuthData(authData);
+            history.replace('/');
+        }
+    }, [response]);
+
+    useEffect(() => {
+        if (error) {
+            return setError('password', 'validation', `${error}`);
+        }
+        return clearError('password');
+    }, [error]);
+
     return (
         <Grid
             container
