@@ -31,6 +31,10 @@ const ButtonPrimmary = withStyles(() => ({
     textTransform: 'none',
     backgroundColor: '#fff',
     color: '#000'
+  },
+  outlined: {
+    minWidth: '100%',
+    textTransform: 'none'
   }
 }))(MuiButton);
 

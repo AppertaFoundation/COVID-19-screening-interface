@@ -18,6 +18,7 @@ import ProfilePastMedicalHistory from '../../common/Pages/Profile/ProfilePastMed
 import ProfileCognition from '../../common/Pages/Profile/ProfileCognition';
 import ProfileConifrmation from '../../common/Pages/Profile/ProfileConifrmation';
 import SingIn from '../../common/Pages/SingIn';
+import FamilyList from '../../common/Pages/FamilyList';
 
 export default () => (
   <BrowserRouter>
@@ -36,7 +37,11 @@ export default () => (
         path="/create-profile"
         component={CreateProfile}
       />
+
       <PrivateRoute exact theme={theme.main} appBar bottomToolbar path="/" component={Dashboard} />
+      <PrivateRoute exact theme={theme.main} appBar bottomToolbar path="/family" component={FamilyList} />
+
+
       <PrivateRoute
         exact
         theme={theme.main}

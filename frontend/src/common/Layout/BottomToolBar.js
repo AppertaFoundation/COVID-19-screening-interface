@@ -42,7 +42,6 @@ export default () => {
           className={classes.root}
           label="Family"
           value="/family"
-          disabled
           icon={<FavoriteBorderIcon />}
         />
         <BottomNavigationAction
