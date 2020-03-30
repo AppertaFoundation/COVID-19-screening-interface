@@ -5,6 +5,7 @@ DJANGO_POSTGRES_DB=django
 C19_BACKEND_SECRET_KEY="t8z$5)6b-4y_liyeo@rh=e=z=0loz!(_6lhaw9(as+k&3!f=x0"
 # Pipe(|)-separated list of URLs to whitelist for CORS origin
 C19_BACKEND_CORS_ORIGIN_WHITELIST=http://localhost:8000
+C19_BACKEND_ALLOWED_HOSTS=dev-03|localhost
 
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
