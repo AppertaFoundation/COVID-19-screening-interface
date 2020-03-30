@@ -19,6 +19,7 @@ import ProfileCognition from '../../common/Pages/Profile/ProfileCognition';
 import ProfileConifrmation from '../../common/Pages/Profile/ProfileConifrmation';
 import SingIn from '../../common/Pages/SingIn';
 import FamilyList from '../../common/Pages/FamilyList';
+import CoronavirusAssessment from '../../common/Pages/CoronavirusAssessment';
 
 export default () => (
   <BrowserRouter>
@@ -40,6 +41,7 @@ export default () => (
 
       <PrivateRoute exact theme={theme.main} appBar bottomToolbar path="/" component={Dashboard} />
       <PrivateRoute exact theme={theme.main} appBar bottomToolbar path="/family" component={FamilyList} />
+      <PrivateRoute exact theme={theme.main} path="/assesment/:id" component={CoronavirusAssessment} />
 
 
       <PrivateRoute

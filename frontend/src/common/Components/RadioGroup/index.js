@@ -6,16 +6,17 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
-  Grid
+  Grid,
+  Typography
 } from '@material-ui/core';
 import { Controller } from 'react-hook-form';
 import ErrorMessage from '../ErrorMsg';
 
 
-const RadioItem = ({ value, label, size = 'small' }) => (
+const RadioItem = ({ value, label }) => (
   <FormControlLabel
     value={value}
-    control={<Radio size={size} color="primary" />}
+    control={<Radio size='small' color="primary" />}
     label={label}
   />
 );
@@ -38,7 +39,7 @@ export default ({
 
   return (
     options.map(question => {
-      const { name, choices, label } = question;
+      const { name, choices, label, info } = question;
       return (
         < Controller
           as={
@@ -52,17 +53,25 @@ export default ({
                 >
                   <Grid container direction="row">
                     {choices &&
+
                       choices.map(item => (
-                        <Box mr={6}>
+                        <Box mr={4}>
                           <RadioItem
                             size={size}
                             value={item.id}
                             label={item.name}
                           />
+
                         </Box>
+
                       ))}
                   </Grid>
                   <ErrorMessage name={name} errors={errors} />
+                  {info && info.map(tip =>
+                    <Typography align="left" variant="caption" component="h4">
+                      {tip}
+                    </Typography>
+                  )}
                 </RadioGroup>
               </FormControl>
             </Box>

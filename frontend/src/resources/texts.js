@@ -95,6 +95,20 @@ const RADIO_OPTIONS = [
     name: 'No'
   }
 ];
+const RADIO_OPTIONS2 = [
+  {
+    id: 'yes',
+    name: 'Yes'
+  },
+  {
+    id: 'no',
+    name: 'No'
+  },
+  {
+    id: 'notsure',
+    name: 'Not sure'
+  }
+];
 const PROFILE_TERMS_SWITCH = [
   {
     name: 'provideA',
@@ -270,7 +284,137 @@ const PROFILE_DISABILITY_RADIO = {
 const PROFILE_COMPLITE = 'Profile complete';
 const BUTTON_ADD_FAMILY = 'Add Family Member';
 const BUTTON_ADD_PROBLEM = 'Add new problem';
+
+
+// Coronavirus assessment
+const CORONAVIRUS_ASSESSMENT_SUBTITLE = 'We’ll now ask you questions about your symptoms.';
+const CORONAVIRUS_ASSESSMENT_TITLE = 'Coronavirus Assessment';
+const CORONAVIRUS_ASSESSMENT_INTRO1 = 'Some might not seem relevant, but they help us rule things out. We rule out serious conditions first. The more questions there are the less serious it’s likely to be.';
+const CORONAVIRUS_ASSESSMENT_INTRO2 = 'You won\'t get a diagnosis, but you will find out what to do next';
+const CORONAVIRUS_ASSESSMENT_RADIO = [
+  {
+    name: 'fever',
+    choices: RADIO_OPTIONS,
+    label: 'Do you have a high temperature (fever)?',
+    info: ['You don\'t need a thermometer or to know a precise temperature. If you feel hot to touch on your chest or back answer \'yes\'.']
+  },
+  {
+    name: 'continousCough',
+    choices: RADIO_OPTIONS,
+    label: 'Do you have a new continuous cough?',
+    info: ['New: means a cough that you\'ve not had before, or if you usually have a cough, it\'s got worse.', 'Continuous: means coughing a lot for more than an hour, or 3 or more coughing episodes in 24 hours.']
+
+  }
+];
+const CORONAVIRUS_ASSESSMENT_RADIO2 = [
+  {
+    name: 'fever',
+    choices: RADIO_OPTIONS2,
+    label: 'Are you so breathless that you are unable to speak more than a few words?'
+  },
+  {
+    name: 'continousCough',
+    choices: RADIO_OPTIONS2,
+    label: 'Are you breathing harder or faster than usual when doing nothing at all?'
+  },
+  {
+    name: 'continousCough',
+    choices: RADIO_OPTIONS2,
+    label: 'Are you so ill that you\'ve stopped doing all of your usual daily activities?',
+  },
+  {
+    name: 'confused',
+    choices: [
+      {
+        id: 'yes',
+        name: 'Yes'
+      },
+      {
+        id: 'no',
+        name: 'No'
+      },
+      {
+        id: 'notsure',
+        name: 'Not sure*'
+      }
+    ],
+    label: 'Have you suddenly become confused, or much more confused than normal?',
+    info: ['*I feel ill but can do some of my usual activities']
+  },
+  {
+    name: 'infectionSerious',
+    choices: RADIO_OPTIONS2,
+    label: 'Has a doctor told you that getting an infection might be very serious?'
+  }
+];
+
+const COVID_ASSESSMENT_NO_SYMPTOMPS_TITLE = 'You\'re unlikely to have coronavirus (COVID-19)';
+const COVID_ASSESSMENT_NO_SYMPTOMPS_LIST_TITLE = 'As you:';
+const COVID_ASSESSMENT_NO_SYMPTOMPS_LIST = [' do not have a high temperature', 'do not have a cough'];
+const COVID_ASSESSMENT_NO_SYMPTOMPS_TEXT = 'Use 111 online if you have symptoms not related to coronavirus to find out what to do next.';
+
+const COVID_ASSESSMENT_SYMPTOMPS_TITLE = 'Before you continue';
+const COVID_ASSESSMENT_SYMPTOMPS_SUBTITLE = 'You need to stay away from other people';
+const COVID_ASSESSMENT_SYMPTOMPS_TEXT1 = 'Your symptoms suggest that you could have a coronavirus infection.';
+const COVID_ASSESSMENT_SYMPTOMPS_TEXT2 = 'We’ll ask you more questions and tell you what to do next.';
+const COVID_ASSESSMENT_SYMPTOMPS_TEXT3 = 'To protect others, do not go to a GP, pharmacy or hospital';
+const COVID_ASSESSMENT_SYMPTOMPS_LIST_TITLE = 'Then:';
+const COVID_ASSESSMENT_SYMPTOMPS_LIST = ['make your way home if not already there', 'go by the most direct route if using public transport', 'stay at least 2 metres (3 steps) away from people if you can'];
+
+const USE111_BUTTON = 'Use 111';
+
+const CORONAVIRUS_ASSESSMENT_RADIO3 = [
+  {
+    name: 'otherSymptomps',
+    choices: RADIO_OPTIONS,
+    label: 'Do you have any other symptoms you think might be due to an infection?'
+  }
+];
+
+const COVID_ASSESSMENT_CHECKBOXES = [
+  {
+    name: 'muscleAches',
+    label: 'Muscle aches'
+  },
+  {
+    name: 'lethargy',
+    label: 'Lethargy'
+  },
+  {
+    name: 'immunosuppressed',
+    label: 'Immunosuppressed'
+  },
+  {
+    name: 'soreEyes',
+    label: 'Sore eyes'
+  },
+  {
+    name: 'runnyNose',
+    label: 'Runny nose'
+  }
+];
+
 export default {
+  COVID_ASSESSMENT_CHECKBOXES,
+  CORONAVIRUS_ASSESSMENT_RADIO3,
+  COVID_ASSESSMENT_NO_SYMPTOMPS_LIST,
+  COVID_ASSESSMENT_NO_SYMPTOMPS_LIST_TITLE,
+  COVID_ASSESSMENT_NO_SYMPTOMPS_TEXT,
+  COVID_ASSESSMENT_NO_SYMPTOMPS_TITLE,
+  COVID_ASSESSMENT_SYMPTOMPS_LIST,
+  COVID_ASSESSMENT_SYMPTOMPS_LIST_TITLE,
+  COVID_ASSESSMENT_SYMPTOMPS_SUBTITLE,
+  COVID_ASSESSMENT_SYMPTOMPS_TEXT1,
+  COVID_ASSESSMENT_SYMPTOMPS_TEXT2,
+  COVID_ASSESSMENT_SYMPTOMPS_TEXT3,
+  COVID_ASSESSMENT_SYMPTOMPS_TITLE,
+  USE111_BUTTON,
+  CORONAVIRUS_ASSESSMENT_SUBTITLE,
+  CORONAVIRUS_ASSESSMENT_RADIO2,
+  CORONAVIRUS_ASSESSMENT_TITLE,
+  CORONAVIRUS_ASSESSMENT_INTRO1,
+  CORONAVIRUS_ASSESSMENT_INTRO2,
+  CORONAVIRUS_ASSESSMENT_RADIO,
   EMERGENCY_CASES,
   EMERGENCY_CHECK_SUBTITLE,
   EMERGENCY_CHECK_TITLE,
