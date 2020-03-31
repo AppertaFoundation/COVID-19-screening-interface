@@ -27,11 +27,13 @@ services:
       POSTGRES_PASSWORD: ${DJANGO_POSTGRES_PASSWORD}
     networks:
       - django_net
+    volumes:
+      - "${C19_BACKEND_POSTGRES_DATA_VOLUME}:/var/lib/postgresql/data/:rw"
 
   ehrdb:
     image: ehrbaseorg/ehrbase-postgres:latest
     volumes:
-      - "./postgres/:/var/lib/postgresql/data/:rw"
+      - "${EHRBASE_POSTGRES_DATA_VOLUME}:/var/lib/postgresql/data/:rw"
     healthcheck:
       test: [ "CMD", "pg_isready", "-q", "-d", "${EHRBASE_DB}", "-U", "${EHRBASE_USER}"]
       timeout: 45s
