@@ -1,6 +1,7 @@
 DJANGO_POSTGRES_USER=django
 DJANGO_POSTGRES_PASSWORD=django
 DJANGO_POSTGRES_DB=django
+C19_BACKEND_POSTGRES_DATA_VOLUME=c19-backend-data
 # Make sure you use a different secret key in production
 C19_BACKEND_SECRET_KEY="t8z$5)6b-4y_liyeo@rh=e=z=0loz!(_6lhaw9(as+k&3!f=x0"
 # Pipe(|)-separated list of URLs to whitelist for CORS origin
@@ -12,6 +13,7 @@ POSTGRES_PASSWORD=postgres
 EHRBASE_USER=ehrbase
 EHRBASE_PASSWORD=ehrbase
 EHRBASE_DB=ehrbase
+EHRBASE_POSTGRES_DATA_VOLUME=ehrdb-data
 
 DB_URL=jdbc:postgresql://ehrdb:5432/ehrbase
 DB_USER=ehrbase

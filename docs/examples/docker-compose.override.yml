@@ -1,0 +1,4 @@
+version: "3.7"
+volumes:
+  ehrdb-data: {}
+  c19-backend-data: {}
